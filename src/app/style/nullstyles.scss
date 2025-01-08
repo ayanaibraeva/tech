@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+
+html {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none
+}
+
+.swiper-pagination-bullet {
+  background-color: rgb(147, 147, 147)!important; /* Цвет для неактивных элементов */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--active-color)!important; /* Фиолетовый цвет для активных элементов */
+}

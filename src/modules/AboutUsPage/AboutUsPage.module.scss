@@ -1,0 +1,47 @@
+.aboutUsHeading {
+  text-align: center;
+  margin-top: 136px;
+}
+
+.aboutUs {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.aboutUsImage,
+.aboutUsImage1 {
+  height: 428px;
+  transition: 0.5s;
+  border-radius: 16px;
+}
+
+.aboutUsImage {
+  width: 840px;
+}
+
+.aboutUsImage1 {
+  width: 380px;
+}
+
+.aboutUsImage.clicked {
+  width: 380px;
+}
+
+.aboutUsImage1.clicked {
+  width: 840px;
+}
+
+.aboutUsImage img,
+.aboutUsImage1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.content {
+  padding: 0 70px;
+  margin-top: 40px;
+}

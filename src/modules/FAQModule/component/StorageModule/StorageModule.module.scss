@@ -1,0 +1,41 @@
+.title {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.caption {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.activeComponent {
+  margin-top: 40px;
+}
+
+.line {
+  width: 655px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.indicator {
+  margin-top: 18px;
+  width: 100%;
+  height: 1px;
+  transition: background-color 0.4s ease;
+}
+
+.inactiveIndicator {
+  background-color: #F8F8F8;
+}
+
+.activeIndicator {
+  background-color: purple;
+}
+

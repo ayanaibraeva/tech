@@ -1,0 +1,57 @@
+.aboutUs {
+  margin-top: 80px;
+  height: 429px;
+  display: flex;
+  gap: 40px;
+  @media(max-width: 900px){
+    flex-direction: column;
+    height: 100%;
+  }
+  &Image {
+    width: 661px;
+    height: 429px;
+    border-radius: 36px;
+    @media(max-width: 900px){
+      width: 100%;
+      height: 100%;
+    }
+    img{
+      border-radius: 36px;
+      width: 661px;
+      height: 429px;
+      object-fit: cover;
+      @media(max-width: 900px){
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.text {
+  margin-top: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn {
+  padding: 10px 20px 10px 36px;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid #FFF;
+  background: var(--fone-file);
+  color: #FFF;
+  margin-top: 15px;
+  transition: 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  background-color: var(--active-color);
+  border: 1px solid var(--active-color);
+}

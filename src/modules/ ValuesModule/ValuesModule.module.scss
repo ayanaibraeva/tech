@@ -1,0 +1,25 @@
+.valuesHeading {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.values {
+  margin-top: 35px;
+  &Content {
+
+  }
+  &Title {
+    margin-top: 40px;
+    color: var(--active-color);
+    font-family: Gilroy, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0;
+    text-align: left;
+  }
+
+  &Text {
+    margin-top: 10px;
+  }
+}

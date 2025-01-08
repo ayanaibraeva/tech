@@ -1,0 +1,141 @@
+/* Стандартные стили для десктопа */
+.h1 {
+  font-family: Gilroy, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.h2 {
+  font-family: Gilroy, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.h3 {
+  font-size: 24px;
+  line-height: 120%;
+  font-family: Gilroy, sans-serif;
+}
+
+.h4 {
+  font-family: Gilroy, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+}
+
+.body {
+  font-family: Gilroy, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.smallBody {
+  font-family: Gilroy, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.extraSmallBody {
+  font-family: Gilroy, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 135%;
+  letter-spacing: 0;
+}
+
+.microBody {
+  color: rgb(107, 110, 112);
+  font-family: Gilroy, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 125%;
+  letter-spacing: 3%;
+  text-transform: uppercase;
+}
+
+.white {
+  color: var(--white);
+}
+
+.activeColor {
+  color: var(--active-color);
+}
+
+/* Адаптация для планшетов (ширина экрана от 768px до 1024px) */
+@media (max-width: 1024px) {
+  .h1 {
+    font-size: 42px; /* Уменьшаем на 10-15% */
+  }
+
+  .h2 {
+    font-size: 34px; /* Уменьшаем на 10-15% */
+  }
+
+  .h3 {
+    font-size: 22px; /* Уменьшаем на 10% */
+  }
+
+  .h4 {
+    font-size: 16px; /* Уменьшаем на 10% */
+  }
+
+  .body {
+    font-size: 18px; /* Уменьшаем на 10% */
+  }
+
+  .smallBody {
+    font-size: 16px; /* Уменьшаем на 10% */
+  }
+
+  .extraSmallBody {
+    font-size: 14px; /* Уменьшаем на 10% */
+  }
+
+  .microBody {
+    font-size: 12px; /* Уменьшаем на 10% */
+  }
+}
+
+/* Адаптация для мобильных устройств (ширина экрана до 767px) */
+@media (max-width: 767px) {
+  .h1 {
+    font-size: 36px; /* Уменьшаем на 25% */
+  }
+
+  .h2 {
+    font-size: 30px; /* Уменьшаем на 25% */
+  }
+
+  .h3 {
+    font-size: 20px; /* Уменьшаем на 20% */
+  }
+
+  .h4 {
+    font-size: 14px; /* Уменьшаем на 20% */
+  }
+
+  .body {
+    font-size: 16px; /* Уменьшаем на 20% */
+  }
+
+  .smallBody {
+    font-size: 14px; /* Уменьшаем на 20% */
+  }
+
+  .extraSmallBody {
+    font-size: 12px; /* Уменьшаем на 20% */
+  }
+
+  .microBody {
+    font-size: 11px; /* Уменьшаем на 15% */
+  }
+}

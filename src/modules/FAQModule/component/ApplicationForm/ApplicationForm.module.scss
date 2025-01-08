@@ -1,0 +1,39 @@
+.form {
+  width: 754px;
+  margin: 0 auto;
+  &Input {
+    margin-bottom: 30px;
+  }
+  &Area{
+    width: 754px;
+    margin-top: 12px;
+    padding: 16px;
+    height: 146px;
+    border-radius: 12px;
+    background: #F8F8F8;
+  }
+}
+
+.errors {
+  color: #E11414;
+  margin-top: 12px;
+}
+
+.submitButton {
+  background-color: var(--active-color);
+  padding: 10px 36px;
+  border-radius: 12px;
+  box-shadow: 0 0 6px 0 #8E52DD;
+  border: none;
+  color: #FFF;
+  font-family: Gilroy, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+}
+
+.success {
+  color: green;
+  margin: 10px;
+}

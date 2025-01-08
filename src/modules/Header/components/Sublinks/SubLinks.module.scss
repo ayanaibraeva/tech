@@ -1,0 +1,77 @@
+.subForm {
+  position: absolute;
+  padding: 20px 60px;
+  border-right: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+  border-left: 1px solid #FFF;
+  background: var(--fone-file);
+  width: 876px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 1;
+  transition: max-height 1s ease-out;
+  right: 15%;
+  top: 100%;
+  &Content {
+    width: 358px;
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    cursor: pointer;
+    p {
+      color: #FFF;
+      font-family: Gilroy, sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 125%;
+    }
+    span {
+      color: #6B6E70;
+      font-family: Gilroy, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 125%;
+    }
+  }
+}
+
+.ArrowDownSvg {
+  transition: transform 0.3s ease;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subForm.open {
+  max-height: 1000px;
+  opacity: 1;
+  position: absolute;
+  transition: max-height 0.5s ease-out;
+}
+
+.toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.5s;
+}
+
+.toggle:hover {
+  color: var(--active-color)
+}
+
+
+

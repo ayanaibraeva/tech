@@ -1,0 +1,38 @@
+.footer {
+  margin-top: 52px;
+  margin-bottom: 52px;
+  &Logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  &Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &Link {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+
+.hr {
+  height: 0.5px;
+  width: 100%;
+  background: rgb(147, 147, 147);
+  margin-top: 80px;
+}
+
+.link {
+  cursor: pointer;
+  list-style: none;
+  transition: 0.5s;
+}
+
+.link:hover {
+  color: var(--active-color)
+}

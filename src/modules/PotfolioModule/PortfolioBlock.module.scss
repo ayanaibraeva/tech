@@ -1,0 +1,98 @@
+.portfolioHeading {
+  margin-top: 98px;
+  text-align: center;
+}
+
+.portfolio {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &Btn {
+    position: absolute;
+    bottom: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 6px 0 rgb(142, 82, 221);
+    background-color: var(--active-color);
+    padding: 10px 36px 10px 36px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    button {
+      color: rgb(255, 255, 255);
+      font-family: Gilroy, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 140%;
+      letter-spacing: 0;
+      text-align: center;
+      border-radius: 12px;
+    }
+  }
+}
+
+.portfolioCard {
+  position: relative;
+  width: 800px;
+  height: 401px;
+  box-shadow: 0 0 6px 0 rgb(142, 82, 221);
+  background: var(--fone-file);
+  border-radius: 36px;
+  padding: 40px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.portfolioContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 250px;
+    object-fit: cover;
+  }
+
+  .description {
+    margin-top: 10px;
+  }
+}
+
+.navigation {
+  display: flex;
+  position: absolute;
+  gap: 730px;
+  button {
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--active-color);
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &.active {
+      background: var(--active-color);
+    }
+  }
+}

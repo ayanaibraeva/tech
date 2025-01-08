@@ -1,0 +1,38 @@
+.accordion-item {
+  border: 1px solid var(--white);
+  background-color: var(--fone-file);
+  border-radius: 18px;
+  box-shadow: 0 4px 8px 0 rgba(134, 194, 50, 0.30);
+  list-style: none;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    //font-weight: 500;
+    cursor: pointer;
+
+    .chevron {
+      transition: transform 0.4s ease-in-out;
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .content-wrapper {
+    overflow-y: hidden;
+    transition: height 0.4s ease-in-out;
+    height: 0;
+
+    &.open {
+      height: auto;
+    }
+
+    .content {
+      padding: 0 30px 30px 30px;
+
+    }
+  }
+}

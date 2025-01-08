@@ -1,0 +1,57 @@
+.header {
+  position: fixed;
+  background-color: var(--fone-file);
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: var(--fone-file);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  @media (max-width: 982px) {
+    display: none;
+  }
+  &Item {
+    display: flex;
+    gap: 52px;
+  }
+
+  &List {
+    list-style: none;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  &List:hover {
+    color: var(--active-color)
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &Btn {
+    padding: 10px 36px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--active-color);
+    color: white;
+  }
+}
+
+.hr {
+  height: 0.5px;
+  width: 100%;
+  background: rgb(147, 147, 147);
+}
