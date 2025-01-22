@@ -7,6 +7,7 @@ import { MultiContainer } from "../../../../UI/MultiContainer/MultiContainer.tsx
 import {Faq} from "../Faq/Faq.tsx";
 import {useQuestionsQuery} from "../../api/useQuestionsQuery.tsx";
 import {Loader} from "../../../../pages/LoaderPage/Loader.tsx";
+import {useTranslation} from "react-i18next";
 
 interface ComponentItem {
     id: number;
@@ -15,11 +16,14 @@ interface ComponentItem {
     title: string;
 }
 
-const components: ComponentItem[] = [
-    { id: 1, Component: Faq, label: "Вопросы", title: "Часто задаваемые вопросы" },
-    { id: 2, Component: ApplicationForm, label: "Оставить заявку", title: "Оставить заявку" },
-];
 export const StorageModule:FC = () => {
+
+    const {t} = useTranslation();
+
+    const components: ComponentItem[] = [
+        { id: 1, Component: Faq, label: `${t("faq.question")}`, title: `${t("faq.faq")}` },
+        { id: 2, Component: ApplicationForm, label: `${t("faq.bid")}`, title: `${t("faq.bid")}` },
+    ];
 
     const {data, loading, error} = useQuestionsQuery();
     const faq = useRef();

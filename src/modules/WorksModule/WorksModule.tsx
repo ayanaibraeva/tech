@@ -5,11 +5,12 @@ import {useWorksQuery} from "./api/useWorksQuery.tsx";
 import {Typography} from "../../UI/Typography/Typography.tsx";
 import {MultiContainer} from "../../UI/MultiContainer/MultiContainer.tsx";
 import {LineIcon} from "../../assets/Icons/LineIcon.tsx";
+import {useTranslation} from "react-i18next";
 
 export const WorksModule = () => {
 
     const { data, loading, error } = useWorksQuery();
-
+    const {t} = useTranslation()
 
     if(loading) return <Loader/>
     if(error) return <div>...error</div>
@@ -17,7 +18,7 @@ export const WorksModule = () => {
 
     return (
        <MultiContainer>
-           <Typography variant="h2" className={classes.worksHeading}>Как мы работаем?</Typography>
+           <Typography variant="h2" className={classes.worksHeading}>{t("howWeWorks")}</Typography>
                <div>
                    <div className={classes.works}>
                        {

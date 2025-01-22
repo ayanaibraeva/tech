@@ -7,17 +7,21 @@ import { useQueryServices } from "./api/useQueryServices.tsx";
 import { Tilt } from "react-tilt";
 import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { useLocation } from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {Breadcrumbs} from "../../UI/Breadcrumbs/Breadcrums.tsx";
 
 export const ServicesModule = () => {
 
     const { data: dataNames, isLoading: isLoadingNames, isError: isErrorNames } = useServicesTypesQuery();
     const { data: dataServices, isLoading: isLoadingServices, isError: isErrorServices } = useQueryServices();
+    const {t} = useTranslation();
 
     const [activeName, setActiveName] = useState("");
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const nameFromUrl = queryParams.get("name");
+
     useEffect(() => {
         if (nameFromUrl) {
             setActiveName(nameFromUrl);
@@ -28,6 +32,7 @@ export const ServicesModule = () => {
 
     if (isLoadingNames || isLoadingServices) return <Loader />;
     if (isErrorNames || isErrorServices) return <div>Ошибка загрузки данных</div>;
+    if (!dataNames || !dataServices) return null;
 
     const filteredServices = activeName
         ? dataServices?.filter((service) =>
@@ -37,7 +42,8 @@ export const ServicesModule = () => {
 
     return (
         <div>
-            <Typography variant="h2" className={classes.title}>Услуги</Typography>
+            <Breadcrumbs currentPage={t("development")}/>
+            <Typography variant="h2" className={classes.title}>{t("services")}</Typography>
             <div className={classes.caption}>
                 {dataNames?.map(({ id, name }) => (
                     <div

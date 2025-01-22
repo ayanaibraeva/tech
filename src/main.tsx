@@ -4,7 +4,7 @@ import { App } from './app';
 import './app/style/global.scss';
 import  "./utils/i18n/i18n.ts";
 
-// Создаём экземпляр QueryClient
+
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {

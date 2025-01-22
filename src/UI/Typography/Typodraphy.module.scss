@@ -1,4 +1,4 @@
-/* Стандартные стили для десктопа */
+
 .h1 {
   font-family: Gilroy, sans-serif;
   font-size: 48px;
@@ -27,7 +27,7 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 140%;
-  letter-spacing: 0%;
+  letter-spacing: 0;
 }
 
 .body {
@@ -39,9 +39,12 @@
 
 .smallBody {
   font-family: Gilroy, sans-serif;
+  color: rgb(255, 255, 255);
   font-size: 18px;
-  font-weight: 400;
-  line-height: 120%;
+  font-weight: 600;
+  line-height: 125%;
+  letter-spacing: 0;
+  text-align: center;
 }
 
 .extraSmallBody {
@@ -70,72 +73,104 @@
   color: var(--active-color);
 }
 
-/* Адаптация для планшетов (ширина экрана от 768px до 1024px) */
+
 @media (max-width: 1024px) {
   .h1 {
-    font-size: 42px; /* Уменьшаем на 10-15% */
+    font-size: 42px;
   }
 
   .h2 {
-    font-size: 34px; /* Уменьшаем на 10-15% */
+    font-size: 34px;
   }
 
   .h3 {
-    font-size: 22px; /* Уменьшаем на 10% */
+    font-size: 22px;
   }
 
-  .h4 {
-    font-size: 16px; /* Уменьшаем на 10% */
-  }
+  //.h4 {
+  //  font-size: 16px; /* Уменьшаем на 10% */
+  //}
 
-  .body {
-    font-size: 18px; /* Уменьшаем на 10% */
-  }
 
   .smallBody {
-    font-size: 16px; /* Уменьшаем на 10% */
+    font-size: 16px;
   }
 
-  .extraSmallBody {
-    font-size: 14px; /* Уменьшаем на 10% */
-  }
+  //.extraSmallBody {
+  //  font-size: 14px; /* Уменьшаем на 10% */
+  //}
 
   .microBody {
-    font-size: 12px; /* Уменьшаем на 10% */
+    font-size: 12px;
   }
 }
 
-/* Адаптация для мобильных устройств (ширина экрана до 767px) */
+
 @media (max-width: 767px) {
   .h1 {
-    font-size: 36px; /* Уменьшаем на 25% */
+    font-size: 36px;
   }
 
   .h2 {
-    font-size: 30px; /* Уменьшаем на 25% */
+    font-size: 30px;
   }
 
   .h3 {
-    font-size: 20px; /* Уменьшаем на 20% */
+    font-size: 20px;
   }
 
   .h4 {
-    font-size: 14px; /* Уменьшаем на 20% */
+    font-size: 16px;
   }
 
   .body {
-    font-size: 16px; /* Уменьшаем на 20% */
+    font-size: 18px;
   }
 
   .smallBody {
-    font-size: 14px; /* Уменьшаем на 20% */
+    font-size: 16px;
   }
 
   .extraSmallBody {
-    font-size: 12px; /* Уменьшаем на 20% */
+    font-size: 16px;
   }
 
   .microBody {
-    font-size: 11px; /* Уменьшаем на 15% */
+    font-size: 11px;
+  }
+}
+
+@media(max-width: 420px){
+  .h1 {
+    font-size: 24px;
+  }
+
+  //.h2 {
+  //  font-size: 22px;
+  //}
+
+  .h3 {
+    font-size: 18px;
+  }
+
+  .h4 {
+    font-size: 14px;
+  }
+
+  .body {
+    font-size: 16px;
+  }
+
+
+  .smallBody {
+
+  }
+
+  .extraSmallBody {
+    font-size: 14px;
+  }
+
+  .microBody {
+
   }
 }

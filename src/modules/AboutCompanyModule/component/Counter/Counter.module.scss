@@ -3,8 +3,12 @@
   justify-content: center;
   gap: 53px;
   margin-top: 117px;
-  @media(max-width: 800px){
+  @media(max-width: 1040px){
     flex-wrap: wrap;
+    margin-top: 94px;
+  }
+  @media(max-width: 646px){
+    margin-top: 46px;
   }
   &Card {
     width: 279px;
@@ -13,6 +17,10 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    @media(max-width: 440px){
+      width: 272px;
+      gap: 16px;
+    }
     span {
       color: var(--active-color);
       font-family: Gilroy;
@@ -20,6 +28,12 @@
       font-style: normal;
       font-weight: 700;
       line-height: 120%;
+      @media(max-width: 767px){
+        font-size: 30px;
+      }
+      @media(max-width: 420px){
+        font-size: 22px;
+      }
     }
   }
 }

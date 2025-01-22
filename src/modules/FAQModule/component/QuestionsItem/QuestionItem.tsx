@@ -13,7 +13,7 @@ export const QuestionItem = ({ children, value, trigger, ...props}) => {
 
     return (
         <li className={classes["accordion-item"]} {...props}>
-            <header
+            <div
                 role="button"
                 onClick={() => setSelected(open ? null : value)}
                 className={classes["header"]}
@@ -21,13 +21,15 @@ export const QuestionItem = ({ children, value, trigger, ...props}) => {
                 <Typography variant="h4" >
                     {trigger}
                 </Typography>
-                <ChevronDown
-                    width="36px"
-                    height="36px"
-                    color="white"
-                    className={`${classes["chevron"]} ${open ? classes["open"] : ""}`}
-                />
-            </header>
+                <div>
+                    <ChevronDown
+                        width="36px"
+                        height="36px"
+                        color="white"
+                        className={`${classes["chevron"]} ${open ? classes["open"] : ""}`}
+                    />
+                </div>
+            </div>
             <div
                 className={`${classes["content-wrapper"]} ${open ? classes["open"] : ""}`}
                 style={{ height: open ? ref.current?.offsetHeight || 0 : 0 }}

@@ -1,6 +1,38 @@
 {
-  "main": "",
+  "main": "Main",
   "form": {
     "number": "Phone number:"
-  }
+  },
+  "header": {
+    "about": "About company",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contacts",
+    "button": "Contact"
+  },
+  "buttonMore": "More",
+  "buttonShow": "View project",
+  "howWeWorks": "How we works?",
+  "team": "Our Team",
+  "faq": {
+    "question": "Questions",
+    "faq": "Frequently asked questions",
+    "bid": "Leave an application",
+    "fio": "FULL NAME",
+    "company": "Company name",
+    "description": "Description",
+    "write": "Write",
+    "send": "Send",
+    "requiredField": "This field is required!",
+    "correctNumber": "Enter the correct phone number",
+    "toastForm": "Form successfully submitted!",
+    "toastFormError": "Form submission error. Please try again."
+  },
+  "values": "Our core values",
+  "services": "Services",
+  "technology": "Technology",
+  "technologyP": "We use the demanded development stack and are ready to pick up a customized one for a specific task.",
+  "development": "Website development",
+  "404": "Something seems to have gone wrong! The page you are requesting does not exist.",
+  "toTheMain": "Go to Home"
 }

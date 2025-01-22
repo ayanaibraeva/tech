@@ -4,10 +4,12 @@ import {useValuesQuery} from "./api/useValuesQuery.tsx";
 import {Loader} from "../../pages/LoaderPage/Loader.tsx";
 import {MultiContainer} from "../../UI/MultiContainer/MultiContainer.tsx";
 import {Typography} from "../../UI/Typography/Typography.tsx";
+import {useTranslation} from "react-i18next";
 
 export const ValuesModule = () => {
 
     const { data, loading, error } = useValuesQuery();
+    const {t} = useTranslation();
 
     if (loading) return <Loader />;
     if (error) return <div>...error</div>;
@@ -15,7 +17,7 @@ export const ValuesModule = () => {
 
     return (
         <MultiContainer>
-            <Typography variant="h2" className={classes.valuesHeading}>Наши основные ценности</Typography>
+            <Typography variant="h2" className={classes.valuesHeading}>{t("values")}</Typography>
             <div className={classes.values}>
                 {
                     data.map((item) =>

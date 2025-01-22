@@ -1,4 +1,5 @@
 .title {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,21 +24,40 @@
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
+  @media(max-width: 500px){
+    gap: 15px;
+  }
   &Content {
+    padding: 16px 6px 16px 6px;
     width: 186px;
     height: 163px;
     border-radius: 20px;
-    background: #1F202C;
+    background-color: #1F202C;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 14px;
+    @media(max-width: 500px){
+      border-radius: 10px;
+    }
+
+    span{
+      color: rgb(255, 255, 255);
+      font-family: Gilroy, sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 125%;
+      letter-spacing: 0;
+      @media(max-width: 500px) {
+        font-size: 12px;
+      }
+    }
     img {
       width: 48.69px;
       height: 48.69px;
     }
-    @media(max-width: 450px) {
+    @media(max-width: 500px) {
       width: 98px;
       height: 85px;
       img {
@@ -80,6 +100,10 @@
     line-height: 125%;
     transition: 0.5s;
     margin-right: 20px;
+    @media(max-width: 500px){
+      font-size: 16px;
+      padding: 8px 28px;
+    }
   }
 
   button:hover {
@@ -93,5 +117,15 @@
     border: 1px solid var(--active-color);
     cursor: pointer;
     transition: 0.3s;
+    font-family: Gilroy, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 125%;
+    letter-spacing: 0;
+    text-align: center;
+    @media(max-width: 500px){
+      font-size: 16px;
+      padding: 8px 28px;
+    }
   }
 }

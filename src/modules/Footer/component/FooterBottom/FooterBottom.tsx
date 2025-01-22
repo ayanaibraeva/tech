@@ -15,8 +15,8 @@ export const FooterBottom = () => {
     return (
         <div>
             {
-                data?.map((item) =>
-                    <div key={item.id} className={classes.footerBottom} >
+                data?.map((item, id) =>
+                    <div key={id} className={classes.footerBottom} >
                         {item.work_schedule && (
                             <a className={classes.icons}>
                                 <ScheduleIcon/>
@@ -26,7 +26,7 @@ export const FooterBottom = () => {
                         {item.phone_number && (
                             <a
                                 className={classes.icons}
-                                href={`tel:${item.phone_number}`}  // добавляем префикс "tel:"
+                                href={`tel:${item.phone_number}`}
                             >
                                 <NumberIcon/>
                                 {item.phone_number}

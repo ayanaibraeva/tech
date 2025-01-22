@@ -6,11 +6,13 @@ import {Typography} from "../../../../UI/Typography/Typography.tsx";
 import {Loader} from "../../../../pages/LoaderPage/Loader.tsx";
 import {ChevronRight} from "../../../../assets/Icons/ChevronRight.tsx";
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export const AboutUs = () => {
 
     const {data, loading, error} = useCounterQuery();
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const handleLearnMore = () => {
         navigate("/about-company");
@@ -25,11 +27,12 @@ export const AboutUs = () => {
                 {
                     data.map((item) =>
                     <div className={classes.aboutUs}>
+                        <Typography className={classes.headingTablet} variant="h2">{t("header.about")}</Typography>
                         <div className={classes.aboutUsImage}>
                             <img src={item.image} alt=""/>
                         </div>
                         <div>
-                            <Typography variant="h2">О компании</Typography>
+                            <Typography className={classes.heading} variant="h2">{t("header.about")}</Typography>
                             <Typography variant="body" className={classes.text}>
                                 {item.description}
                             </Typography>
@@ -37,7 +40,7 @@ export const AboutUs = () => {
                                 onClick={handleLearnMore}
                                 className={classes.btn}
                             >
-                                Подробнее
+                                <Typography variant="h4">{t("buttonMore")}</Typography>
                                 <ChevronRight color="#FFF" height="24px" width="24px"/>
                             </button>
                         </div>

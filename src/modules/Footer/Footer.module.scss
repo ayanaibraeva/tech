@@ -16,6 +16,11 @@
   &Link {
     display: flex;
     gap: 40px;
+    @media (max-width: 680px) {
+      flex-direction: column;
+      gap: 30px;
+      text-align: center;
+    }
   }
 }
 
@@ -31,6 +36,16 @@
   cursor: pointer;
   list-style: none;
   transition: 0.5s;
+
+  span {
+    color: rgb(255, 255, 255);
+    font-family: Gilroy, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0;
+    text-align: left;
+  }
 }
 
 .link:hover {

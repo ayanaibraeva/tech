@@ -6,5 +6,8 @@
     margin-top: 12px;
     background: #F8F8F8;
     border-radius: 12px;
+    @media(max-width: 420px) {
+      margin-top: 10px;
+    }
   }
 }

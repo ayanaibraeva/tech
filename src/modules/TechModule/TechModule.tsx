@@ -5,17 +5,19 @@ import { useTechTypesQuery } from "./api/useTechTypesQuery.tsx";
 import { useTechQuery } from "./api/useTechQuery.tsx";
 import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 
 export const TechModule = () => {
     const { data: techTypes, isLoading: isLoadingTypes, isError: isErrorTypes } = useTechTypesQuery();
     const { data: techData, isLoading: isLoadingTech, isError: isErrorTech } = useTechQuery();
-
+    const {t} = useTranslation();
 
     const [activeName, setActiveName] = useState();
 
     if (isLoadingTypes || isLoadingTech) return <Loader />;
     if (isErrorTypes || isErrorTech) return <div>Ошибка загрузки данных</div>;
+    if(!techData || !techTypes) return null;
 
     const filteredTech = activeName
         ? techData?.filter((tech) =>
@@ -26,13 +28,13 @@ export const TechModule = () => {
     return (
         <div>
             <div className={classes.title}>
-                <Typography variant="h2">Технологии</Typography>
-                <p>Используем востребованный стек разработки и готовы подобрать индивидуальный под конкретную задачу.</p>
+                <Typography variant="h2">{t("technology")}</Typography>
+                <Typography variant="h3">{t("technologyP")}</Typography>
             </div>
             <div className={classes.caption}>
-                {techTypes?.map(({ id, name }) => (
+                {techTypes?.map(({ id, name }, index) => (
                     <div
-                        key={id}
+                        key={id || `${name}-${index}`}
                         onClick={() => setActiveName(name)}
                     >
                         <button className={activeName === name ? classes.activeButton : ""}>
@@ -44,7 +46,7 @@ export const TechModule = () => {
 
             {filteredTech.length > 0 ? (
                 <div className={classes.card}>
-                    {filteredTech.map((tech) => (
+                    {filteredTech?.map((tech) => (
                         <div
                             key={tech.id}
                             className={classes.cardContent}
@@ -53,7 +55,7 @@ export const TechModule = () => {
                                 src={tech.icon}
                                 alt={tech.title || "Иконка"}
                             />
-                            <Typography variant="h4" >{tech.name}</Typography>
+                            <span>{tech.name}</span>
                         </div>
                     ))}
                 </div>

@@ -1,5 +1,5 @@
 .title {
-  margin-top: 136px;
+  margin-top: 45px;
   display: flex;
   justify-content: center;
 }
@@ -24,7 +24,7 @@
 .line {
   position: relative;
   cursor: pointer;
-  white-space: nowrap; /* Запрещаем перенос текста */
+  white-space: nowrap;
   padding: 10px 20px;
   border-radius: 20px;
   transition: background-color 0.3s ease;
@@ -93,14 +93,13 @@
     width: 216px;
   }
   @media (max-width: 675px) {
-    width: 216px; /* Устанавливаем точную ширину */
+    width: 216px;
     flex-shrink: 0;
     margin: 12px;
-    /* Запрещаем сжатие элемента */
   }
 
   &:hover {
-    transform: translateY(-10px); /* Легкий подъем компонента при наведении */
+    transform: translateY(-10px);
   }
 
   span {

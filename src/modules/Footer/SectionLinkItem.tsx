@@ -1,7 +1,6 @@
 import classes from "../Header/Header.module.scss"
 
 import { NavLink } from "react-router-dom";
-import { Typography } from "../../UI/Typography/Typography.tsx";
 
 export const SectionLinkItem = ({ to, label, className }) => {
     return (
@@ -10,9 +9,9 @@ export const SectionLinkItem = ({ to, label, className }) => {
                 to={`/#${to}`}
                 aria-label={to}
             >
-                <Typography className={classes.navbarList} color="white" variant="h4">
+                <span className={classes.navbarList}>
                     {label}
-                </Typography>
+                </span>
             </NavLink>
         </li>
     );

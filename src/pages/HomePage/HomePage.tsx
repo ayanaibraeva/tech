@@ -11,7 +11,7 @@ export const HomePage = () => {
     const ourTeam = useRef();
 
     return (
-        <div>
+        <section>
             <Banner/>
             <Counter/>
             <AboutUs/>
@@ -21,6 +21,6 @@ export const HomePage = () => {
                 <OurTeam/>
             </div>
             <StorageModule/>
-        </div>
+        </section>
     )
 }

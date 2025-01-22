@@ -18,8 +18,8 @@ export const FooterContact = () => {
     return (
         <div>
             {
-                data?.map((item) =>
-                    <div key={item.id} className={classes.footerContact}>
+                data?.map((item, id) =>
+                    <div key={id} className={classes.footerContact}>
                         {item.telegram_link && (
                             <a href={item.telegram_link} target="_blank" rel="noopener noreferrer">
                                 <TelegramIcon />

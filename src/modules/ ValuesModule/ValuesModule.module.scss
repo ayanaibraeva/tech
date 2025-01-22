@@ -1,14 +1,26 @@
 .valuesHeading {
   text-align: center;
   margin-top: 80px;
+  //white-space: nowrap;
+  @media(max-width: 500px){
+    margin-top: 48px;
+  }
 }
 
 .values {
   margin-top: 35px;
+  margin-bottom: 80px;
+  @media(max-width: 800px){
+    margin-bottom: 60px;
+  }
+  @media(max-width: 500px){
+    margin-bottom: 40px;
+  }
   &Content {
 
   }
   &Title {
+    list-style: disc;
     margin-top: 40px;
     color: var(--active-color);
     font-family: Gilroy, sans-serif;
@@ -17,9 +29,17 @@
     line-height: 140%;
     letter-spacing: 0;
     text-align: left;
+    @media(max-width: 800px){
+      font-size: 20px;
+    }
+    @media(max-width: 500px){
+      margin-top: 20px;
+      font-size: 18px;
+    }
   }
 
   &Text {
     margin-top: 10px;
+    margin-left: 10px;
   }
 }

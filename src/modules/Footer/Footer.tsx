@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { FooterContact } from "./component/FooterContact/FooterContact.tsx";
 import {SectionLinkItem} from "./SectionLinkItem.tsx";
 import {FooterBottom} from "./component/FooterBottom/FooterBottom.tsx";
+import {useTranslation} from "react-i18next";
+import {LogoIcon} from "../../assets/Icons/LogoIcon.tsx";
 
 export const Footer = () => {
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const handleNavigate = (path) => {
         navigate(path);
@@ -19,26 +22,29 @@ export const Footer = () => {
             <div className={classes.hr} />
             <MultiContainer>
                 <footer className={classes.footer}>
-                    <div onClick={() => handleNavigate('/')}>
-                        <Typography className={classes.footerLogo} variant="h2">TECHFUSION</Typography>
+                    <div
+                        className={classes.footerLogo}
+                        onClick={() => handleNavigate('/')}
+                    >
+                        <LogoIcon/>
                     </div>
                     <div className={classes.footerContent}>
                         <FooterContact />
                         <div className={classes.footerLink}>
                             <div className={classes.link} onClick={() => handleNavigate('/about-company')}>
-                                <Typography variant="h4">О компании</Typography>
+                                <span>{t("header.about")}</span>
                             </div>
                             <div className={classes.link} onClick={() => handleNavigate('/services')}>
-                                <Typography variant="h4" >Услуги</Typography>
+                                <span >{t("header.services")}</span>
                             </div>
                             <SectionLinkItem
                                 to="portfolio"
-                                label="Портфолио"
+                                label={t("header.portfolio")}
                                 className={classes.link}
                             />
                             <SectionLinkItem
                                 to="ourTeam"
-                                label="Наша команда"
+                                label={t("team")}
                                 className={classes.link}
                             />
                             <SectionLinkItem

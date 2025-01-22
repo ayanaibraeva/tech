@@ -1,3 +1,17 @@
+.heading {
+  @media(max-width: 900px){
+    display: none;
+  }
+}
+
+.headingTablet {
+  display: none;
+  @media(max-width: 900px){
+    display: block;
+    text-align: center;
+  }
+}
+
 .aboutUs {
   margin-top: 80px;
   height: 429px;
@@ -6,6 +20,11 @@
   @media(max-width: 900px){
     flex-direction: column;
     height: 100%;
+    gap: 20px;
+    margin-top: 60px;
+  }
+  @media(max-width: 520px){
+    margin-top: 40px;
   }
   &Image {
     width: 661px;
@@ -13,7 +32,10 @@
     border-radius: 36px;
     @media(max-width: 900px){
       width: 100%;
-      height: 100%;
+    }
+    @media(max-width: 600px){
+      border-radius: 24px;
+      height: 217px;
     }
     img{
       border-radius: 36px;
@@ -22,7 +44,11 @@
       object-fit: cover;
       @media(max-width: 900px){
         width: 100%;
-        height: 100%;
+        border-radius: 24px;
+      }
+      @media(max-width: 600px){
+        width: 100%;
+        height: 217px;
       }
     }
   }
@@ -35,11 +61,13 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  @media(max-width: 900px){
+    margin-top: 0;
+  }
 }
 
 .btn {
-  padding: 10px 20px 10px 36px;
-  gap: 10px;
+  padding: 10px 36px;
   border-radius: 12px;
   border: 1px solid #FFF;
   background: var(--fone-file);
@@ -49,9 +77,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media(max-width: 600px){
+    padding: 8px 28px;
+  }
 }
 
 .btn:hover {
   background-color: var(--active-color);
   border: 1px solid var(--active-color);
+  box-shadow: 0 0 6px 0 rgb(142, 82, 221);
 }
