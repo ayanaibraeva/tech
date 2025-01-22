@@ -21,7 +21,7 @@ export const ValuesModule = () => {
             <div className={classes.values}>
                 {
                     data.map((item) =>
-                        <div className={classes.valuesContent}>
+                        <div key={item.id} className={classes.valuesContent}>
                             <ul>
                                 <li className={classes.valuesTitle}>{item.title}</li>
                             </ul>

@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 export const ApplicationForm = () => {
     const { t } = useTranslation();
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" });

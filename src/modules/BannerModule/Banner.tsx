@@ -2,7 +2,6 @@ import classes from "./Banner.module.scss";
 
 import {Typography} from "../../UI/Typography/Typography.tsx";
 import {MultiContainer} from "../../UI/MultiContainer/MultiContainer.tsx";
-
 import bannerImage from "../../assets/image/Start.png"
 import {Loader} from "../../pages/LoaderPage/Loader.tsx";
 import {useBannerQuery} from "./api/useBannerQuery.tsx";
@@ -22,11 +21,15 @@ export const Banner = () => {
 
     return (
         <MultiContainer>
-            <div className={classes.banner}>
+            <>
                 {
-                    data.map((item) =>
-                        <>
-                            <div className={classes.bannerHeading}>
+                    data.map((item, index) =>
+                        <div
+                            key={item.id || index}
+                            className={classes.banner}
+                        >
+                            <div
+                                className={classes.bannerHeading}>
                                 <Typography  variant="h1">{item.title}</Typography>
                                 <Typography className={classes.bannerTitle} variant="body" color="activeColor">{item.text}</Typography>
 
@@ -42,13 +45,13 @@ export const Banner = () => {
                                     </a>
                                 )}
                             </div>
-                            <div className={classes.bannerImage}>
+                            <div  className={classes.bannerImage}>
                                 <img src={bannerImage} alt=""/>
                             </div>
-                        </>
+                        </div>
                     )
                 }
-            </div>
+            </>
         </MultiContainer>
     )
 }

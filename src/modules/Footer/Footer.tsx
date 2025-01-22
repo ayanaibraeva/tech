@@ -1,7 +1,6 @@
 import classes from "./Footer.module.scss";
 
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
-import { Typography } from "../../UI/Typography/Typography.tsx";
 import { useNavigate } from "react-router-dom";
 import { FooterContact } from "./component/FooterContact/FooterContact.tsx";
 import {SectionLinkItem} from "./SectionLinkItem.tsx";

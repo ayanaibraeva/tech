@@ -13,29 +13,26 @@ const MAX_VISIBILITY = 3;
 
 const Carousel = ({ children }) => {
     const [active, setActive] = useState(2);
+    const [startX, setStartX] = useState(null);
     const count = Children.count(children);
     const portfolio = useRef();
-    const startX = useRef(0);
-    const currentX = useRef(0);
 
-    // Обработка начала касания
     const handleTouchStart = (e) => {
-        startX.current = e.touches[0].clientX;
+        setStartX(e.touches[0].clientX);
     };
 
-    // Обработка движения пальца
     const handleTouchMove = (e) => {
-        currentX.current = e.touches[0].clientX;
+        if (!startX) return;
+
+        const diffX = startX - e.touches[0].clientX;
+        if (Math.abs(diffX) > 50) {
+            setActive((prevActive) => (diffX > 0 ? prevActive + 1 : prevActive - 1));
+            setStartX(null);
+        }
     };
 
-    // Обработка завершения касания
     const handleTouchEnd = () => {
-        const deltaX = startX.current - currentX.current;
-        if (deltaX > 50 && active < count - 1) {
-            setActive((prev) => prev + 1); // Сдвиг вправо
-        } else if (deltaX < -50 && active > 0) {
-            setActive((prev) => prev - 1); // Сдвиг влево
-        }
+        setStartX(null);
     };
 
     return (

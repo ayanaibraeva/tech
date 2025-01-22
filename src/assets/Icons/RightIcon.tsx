@@ -6,7 +6,7 @@ export const RightIcon = ({ width, height, color }) => {
             viewBox="0 0 10.0648 18.0081"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
         >
             <path
                 id="Vector"

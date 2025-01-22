@@ -158,7 +158,7 @@ export const Header = () => {
                 </div>
                 <div className={classes.sidePanelLinks}>
                     {headerLinks.map(link => (
-                        <div onClick={closeMenu}>
+                        <div key={link.id} onClick={closeMenu}>
                             <SectionLinkItem
                                 key={link.id}
                                 to={link.label}

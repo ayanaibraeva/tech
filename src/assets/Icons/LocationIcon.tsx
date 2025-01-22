@@ -1,6 +1,6 @@
 export const LocationIcon = () => {
     return (
-        <svg width="32.000000" height="32.000000" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg width="32.000000" height="32.000000" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <rect id="basil:location-outline" rx="0.000000" width="31.000000" height="31.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fillOpacity="0"/>
             <g clipPath="url(#clip27_4224)">
                 <path id="Vector" d="M9.66 13.33C9.66 11.65 10.33 10.04 11.52 8.85C12.7 7.66 14.32 7 16 7C17.67 7 19.29 7.66 20.47 8.85C21.66 10.04 22.33 11.65 22.33 13.33C22.33 15.01 21.66 16.62 20.47 17.81C19.29 18.99 17.67 19.66 16 19.66C14.32 19.66 12.7 18.99 11.52 17.81C10.33 16.62 9.66 15.01 9.66 13.33ZM16 9C14.85 9 13.74 9.45 12.93 10.26C12.12 11.08 11.66 12.18 11.66 13.33C11.66 14.48 12.12 15.58 12.93 16.39C13.74 17.21 14.85 17.66 16 17.66C17.14 17.66 18.25 17.21 19.06 16.39C19.87 15.58 20.33 14.48 20.33 13.33C20.33 12.18 19.87 11.08 19.06 10.26C18.25 9.45 17.14 9 16 9Z" fill="#FFFFFF" fillOpacity="1.000000" fillRule="evenodd"/>

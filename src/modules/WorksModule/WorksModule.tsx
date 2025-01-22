@@ -23,7 +23,10 @@ export const WorksModule = () => {
                    <div className={classes.works}>
                        {
                            data?.map((item, index) =>
-                               <div className={classes.worksLine}>
+                               <div
+                                   key={item.id || index}
+                                   className={classes.worksLine}
+                               >
                                    <div className={classes.worksImage}>
                                        <img src={item.icon} alt={item.title}/>
                                    </div>
@@ -37,13 +40,14 @@ export const WorksModule = () => {
 
                    <div className={classes.worksContent}>
                        {
-                           data?.map((item) =>
-                               <>
-                                   <div className={classes.worksText}>
-                                       <Typography variant="h4">{item.title}</Typography>
-                                       <Typography variant="microBody"> {item.description}</Typography>
-                                   </div>
-                               </>
+                           data?.map((item, index) =>
+                               <div
+                                   key={item.id || index}
+                                   className={classes.worksText}
+                               >
+                                   <Typography variant="h4">{item.title}</Typography>
+                                   <Typography variant="microBody"> {item.description}</Typography>
+                               </div>
                            )
                        }
                    </div>
@@ -51,8 +55,11 @@ export const WorksModule = () => {
 
                    <div>
                        {
-                           data?.map((item) =>
-                               <div className={classes.mobileWorks}>
+                           data?.map((item, index) =>
+                               <div
+                                   key={item.id || index}
+                                   className={classes.mobileWorks}
+                               >
                                    <div className={classes.worksImage}>
                                        <img src={item.icon} alt={item.title}/>
                                    </div>

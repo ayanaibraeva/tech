@@ -22,7 +22,10 @@ export const Counter = () => {
                 <div className={classes.counter}>
                     {
                         counterOn && data[0]?.details.map((item) =>
-                            <div className={classes.counterCard}>
+                            <div
+                                key={item.id}
+                                className={classes.counterCard}
+                            >
                                 <span>
                                     <CountUp
                                         key={item.id}

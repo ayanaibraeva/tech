@@ -28,7 +28,7 @@ export const OurTeam = () => {
             <div className={classes.ourTeam}>
                 <Swiper
                     spaceBetween={40}
-                    slidesPerView={4} // По умолчанию 4 слайда
+                    slidesPerView={4}
                     loop={true}
                     pagination={{
                         clickable: true,
@@ -37,23 +37,19 @@ export const OurTeam = () => {
                     modules={[Pagination]}
                     ref={swiperRef}
                     breakpoints={{
-                        // Экран >= 1024px
                         1024: {
-                            slidesPerView: 4, // 4 слайда для десктопа
+                            slidesPerView: 4,
                         },
-                        // Экран >= 768px
                         768: {
                             slidesPerView: 3,
-                            spaceBetween: 20// 3 слайда для планшета
+                            spaceBetween: 20
                         },
-                        // Экран >= 480px
                         320: {
                             slidesPerView: 2,
                             spaceBetween: 8
                         },
-                        // Экран < 480px
                         0: {
-                            slidesPerView: 1, // 1 слайд для маленьких экранов
+                            slidesPerView: 1,
                         },
                     }}
                 >
@@ -91,7 +87,6 @@ export const OurTeam = () => {
                 </button>
             </div>
 
-            {/* Пагинация */}
             <div className={classes.pagination}></div>
         </MultiContainer>
     );

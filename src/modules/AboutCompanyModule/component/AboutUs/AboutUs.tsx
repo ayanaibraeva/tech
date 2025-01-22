@@ -25,8 +25,11 @@ export const AboutUs = () => {
     return (
         <MultiContainer>
                 {
-                    data.map((item) =>
-                    <div className={classes.aboutUs}>
+                    data.map((item, index) =>
+                    <div
+                        key={item.id || index}
+                        className={classes.aboutUs}
+                    >
                         <Typography className={classes.headingTablet} variant="h2">{t("header.about")}</Typography>
                         <div className={classes.aboutUsImage}>
                             <img src={item.image} alt=""/>
