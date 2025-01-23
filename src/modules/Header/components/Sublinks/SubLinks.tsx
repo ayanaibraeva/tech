@@ -1,28 +1,36 @@
 import classes from "./SubLinks.module.scss";
 
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useServicesTypesQuery } from "../../api/useServicesTypesQuery.tsx";
-import { Loader } from "../../../../pages/LoaderPage/Loader.tsx";
 import { ChevronRight } from "../../../../assets/Icons/ChevronRight.tsx";
 import { ChevronDownHover } from "../../../../assets/Icons/ChevronDownHover.tsx";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-export const SubLinks = ({ closeMenu }) => {
+interface SubLinksProps {
+    closeMenu?: () => void;
+}
 
-    const { data, loading, error } = useServicesTypesQuery();
+interface ServiceType {
+    id: string;
+    name: string;
+    text: string;
+}
 
-    const [isOpen, setIsOpen] = useState(false);
+export const SubLinks: React.FC<SubLinksProps> = ({ closeMenu }) => {
+    const { data, isLoading, error } = useServicesTypesQuery();
+
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const navigate = useNavigate();
-    const dropdownRef = useRef(null);
-    const toggleRef = useRef(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+    const toggleRef = useRef<HTMLDivElement | null>(null);
     const { t } = useTranslation();
 
     const closeDropdown = () => {
         setIsOpen(false);
     };
 
-    const handleItemClick = (name) => {
+    const handleItemClick = (name: string) => {
         navigate(`/services?name=${name}`);
         closeDropdown();
         if (closeMenu) {
@@ -34,14 +42,13 @@ export const SubLinks = ({ closeMenu }) => {
         setIsOpen((prev) => !prev);
     };
 
-
     useEffect(() => {
-        const handleClickOutside = (event) => {
+        const handleClickOutside = (event: MouseEvent) => {
             if (
                 dropdownRef.current &&
-                !dropdownRef.current.contains(event.target) &&
+                !dropdownRef.current.contains(event.target as Node) &&
                 toggleRef.current &&
-                !toggleRef.current.contains(event.target)
+                !toggleRef.current.contains(event.target as Node)
             ) {
                 closeDropdown();
             }
@@ -54,9 +61,11 @@ export const SubLinks = ({ closeMenu }) => {
         };
     }, []);
 
-    if (loading) return <Loader />;
+    if (isLoading) return <div>...</div>;
     if (error) return <div>...error</div>;
     if (!data) return null;
+
+    const serviceTypes = data as ServiceType[];
 
     return (
         <div>
@@ -74,7 +83,7 @@ export const SubLinks = ({ closeMenu }) => {
                 ref={dropdownRef}
                 className={`${classes.subForm} ${isOpen ? classes.open : ""}`}
             >
-                {data.map((item) => (
+                {serviceTypes.map((item) => (
                     <div
                         key={item.id}
                         className={classes.subFormContent}

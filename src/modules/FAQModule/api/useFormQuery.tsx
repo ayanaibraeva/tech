@@ -1,12 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import {BASE_URL} from "../../../utils/constants/constants.ts";
+import { BASE_URL } from "../../../utils/constants/constants.ts";
+
 interface FormData {
     name: string;
     company_name?: string;
-    phone_number: number;
-    description: string;
+    phone_number: string;
+    description?: string;
 }
+
 interface ApiResponse {
     success: boolean;
     message: string;

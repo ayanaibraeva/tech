@@ -1,4 +1,12 @@
-export const ChevronRight = ({color, width, height, className}) => {
+import {FC} from "react";
+
+interface ChevronRightProps {
+    width?: string | number;
+    height?: string | number;
+    color?: string;
+    className?: string;
+}
+export const ChevronRight:FC<ChevronRightProps> = ({color, width, height, className}) => {
     return (
         <svg
             width={width}

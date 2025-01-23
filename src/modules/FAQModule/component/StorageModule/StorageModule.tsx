@@ -1,45 +1,39 @@
-import classes from "./StorageModule.module.scss"
+import classes from "./StorageModule.module.scss";
 
-import {FC, useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import { Typography } from "../../../../UI/Typography/Typography.tsx";
 import { ApplicationForm } from "../ApplicationForm/ApplicationForm.tsx";
 import { MultiContainer } from "../../../../UI/MultiContainer/MultiContainer.tsx";
-import {Faq} from "../Faq/Faq.tsx";
-import {useQuestionsQuery} from "../../api/useQuestionsQuery.tsx";
-import {Loader} from "../../../../pages/LoaderPage/Loader.tsx";
-import {useTranslation} from "react-i18next";
+import { Faq } from "../Faq/Faq.tsx";
+import { useQuestionsQuery } from "../../api/useQuestionsQuery.tsx";
+import { Loader } from "../../../../pages/LoaderPage/Loader.tsx";
+import { useTranslation } from "react-i18next";
 
-interface ComponentItem {
-    id: number;
-    Component:FC;
-    label: string;
-    title: string;
-}
 
-export const StorageModule:FC = () => {
+export const StorageModule: React.FC = () => {
+    const { t } = useTranslation();
 
-    const {t} = useTranslation();
-
-    const components: ComponentItem[] = [
-        { id: 1, Component: Faq, label: `${t("faq.question")}`, title: `${t("faq.faq")}` },
-        { id: 2, Component: ApplicationForm, label: `${t("faq.bid")}`, title: `${t("faq.bid")}` },
+    const components = [
+        { id: 1, Component: Faq, label: t("faq.question"), title: t("faq.faq") },
+        { id: 2, Component: ApplicationForm, label: t("faq.bid"), title: t("faq.bid") },
     ];
 
-    const {data, loading, error} = useQuestionsQuery();
-    const faq = useRef();
+    const { data, isLoading, error } = useQuestionsQuery();
+
+    const faqRef = useRef<HTMLDivElement>(null);
 
     const [activeComponent, setActiveComponent] = useState<number>(1);
 
     const ActiveComponent = components.find((comp) => comp.id === activeComponent)?.Component;
     const activeTitle = components.find((comp) => comp.id === activeComponent)?.title;
 
-    if(loading) return <Loader/>
-    if(error) return <div>...error</div>
-    if(!data) return null
+    if (isLoading) return <Loader />;
+    if (error) return <div>...error</div>;
+    if (!data) return null;
 
     return (
         <MultiContainer>
-            <Typography id="faq" ref={faq} variant="h2" color="white" className={classes.title}>
+            <Typography id="faq" ref={faqRef} variant="h2" color="white" className={classes.title}>
                 {activeTitle}
             </Typography>
             <div>
@@ -65,7 +59,7 @@ export const StorageModule:FC = () => {
                     ))}
                 </div>
                 <div className={classes.activeComponent}>
-                    <ActiveComponent />
+                    {ActiveComponent && <ActiveComponent />}
                 </div>
             </div>
         </MultiContainer>

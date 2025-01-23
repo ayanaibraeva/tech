@@ -5,13 +5,20 @@ import { useTranslation } from "react-i18next";
 
 import {Typography} from "../Typography/Typography.tsx";
 import {ChevronRight} from "../../assets/Icons/ChevronRight.tsx";
+import {FC, JSX} from "react";
 
+interface BreadcrumbsProps {
+    currentPage?: string;
+    parentPageLink?: string;
+    currentPageId?: string;
+    className?: string;
+}
 
-export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId, className }) => {
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({ currentPage, parentPageLink, currentPageId, className }) => {
 
     const { t } = useTranslation();
 
-    const crumbs = [];
+    const crumbs: JSX.Element[] = [];
 
     crumbs.push(
         <li key="main">

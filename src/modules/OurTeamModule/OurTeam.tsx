@@ -8,16 +8,24 @@ import "swiper/swiper-bundle.css";
 import { useRef } from 'react';
 import { Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
-import {LeftIcon} from "../../assets/Icons/LeftIcon.tsx";
-import {RightIcon} from "../../assets/Icons/RightIcon.tsx";
+import { LeftIcon } from "../../assets/Icons/LeftIcon.tsx";
+import { RightIcon } from "../../assets/Icons/RightIcon.tsx";
+
+
+interface TeamMember {
+    id: string;
+    name: string;
+    position: string;
+    image: string;
+}
 
 export const OurTeam = () => {
-    const { data, loading, error } = useTeamQuery();
-    const swiperRef = useRef(null);
+    const { data, isLoading, isError } = useTeamQuery();
+    const swiperRef:any = useRef(null);
     const { t } = useTranslation();
 
-    if (loading) return <Loader />;
-    if (error) return <div>...error</div>;
+    if (isLoading) return <Loader />;
+    if (isError) return <div>...error</div>;
     if (!data) return null;
 
     return (
@@ -53,7 +61,7 @@ export const OurTeam = () => {
                         },
                     }}
                 >
-                    {data.map((item) => (
+                    {data.map((item: TeamMember) => ( // Specified type for item
                         <SwiperSlide key={item.id}>
                             <div className={classes.card}>
                                 <div className={classes.cardImg}>
@@ -74,14 +82,14 @@ export const OurTeam = () => {
             <div className={classes.btn}>
                 <button
                     className={classes.arrowLeft}
-                    onClick={() => swiperRef.current.swiper.slidePrev()}
+                    onClick={() => swiperRef.current?.swiper.slidePrev()} // Added null check
                 >
                     <LeftIcon width="16px" height="16px" color="white" />
                 </button>
 
                 <button
                     className={classes.arrowRight}
-                    onClick={() => swiperRef.current.swiper.slideNext()}
+                    onClick={() => swiperRef.current?.swiper.slideNext()} // Added null check
                 >
                     <RightIcon width="16px" height="16px" color="white" />
                 </button>

@@ -3,16 +3,16 @@ import classes from "./Footer.module.scss";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
 import { useNavigate } from "react-router-dom";
 import { FooterContact } from "./component/FooterContact/FooterContact.tsx";
-import {SectionLinkItem} from "./SectionLinkItem.tsx";
-import {FooterBottom} from "./component/FooterBottom/FooterBottom.tsx";
-import {useTranslation} from "react-i18next";
-import {LogoIcon} from "../../assets/Icons/LogoIcon.tsx";
+import { SectionLinkItem } from "./SectionLinkItem.tsx";
+import { FooterBottom } from "./component/FooterBottom/FooterBottom.tsx";
+import { useTranslation } from "react-i18next";
+import { LogoIcon } from "../../assets/Icons/LogoIcon.tsx";
 
 export const Footer = () => {
     const navigate = useNavigate();
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
-    const handleNavigate = (path) => {
+    const handleNavigate = (path: string) => {
         navigate(path);
     };
 
@@ -25,7 +25,7 @@ export const Footer = () => {
                         className={classes.footerLogo}
                         onClick={() => handleNavigate('/')}
                     >
-                        <LogoIcon/>
+                        <LogoIcon />
                     </div>
                     <div className={classes.footerContent}>
                         <FooterContact />
@@ -34,7 +34,7 @@ export const Footer = () => {
                                 <span>{t("header.about")}</span>
                             </div>
                             <div className={classes.link} onClick={() => handleNavigate('/services')}>
-                                <span >{t("header.services")}</span>
+                                <span>{t("header.services")}</span>
                             </div>
                             <SectionLinkItem
                                 to="portfolio"
@@ -52,7 +52,7 @@ export const Footer = () => {
                                 className={classes.link}
                             />
                         </div>
-                        <FooterBottom/>
+                        <FooterBottom />
                     </div>
                 </footer>
             </MultiContainer>

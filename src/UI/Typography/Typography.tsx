@@ -1,6 +1,6 @@
 import classes from "./Typodraphy.module.scss";
 
-export const Typography = (props) => {
+export const Typography = (props: any) => {
     const {
         variant,
         weight,
@@ -10,7 +10,7 @@ export const Typography = (props) => {
         truncate = false,
         id,
         textTransform
-    } = props
+    }: any = props;
 
     const Tags = {
         h1: 'h1',
@@ -22,7 +22,10 @@ export const Typography = (props) => {
         button: 'button',
         p: 'p',
         span: 'span',
-    }
+    };
+
+
+    const TagName:any = Tags[variant as keyof typeof Tags] || 'p';
 
     const classNamedGenerated = [
         classes[variant],
@@ -32,20 +35,18 @@ export const Typography = (props) => {
     ]
         .filter(Boolean)
         .join(' ')
-        .trim()
-    const truncateString = (str, maxNumber) => {
-        if (typeof str === 'string') {
-            return str.length <= maxNumber ? str : str.slice(0, maxNumber) + '...'
-        }
-        return str
-    }
+        .trim();
 
-    const TagName = Tags[variant in Tags ? variant : 'p']
+    const truncateString = (str: any, maxNumber: number) => {
+        if (typeof str === 'string') {
+            return str.length <= maxNumber ? str : str.slice(0, maxNumber) + '...';
+        }
+        return str;
+    };
 
     return (
         <TagName id={id} className={classNamedGenerated} style={{ textTransform }}>
             {!truncate ? children : truncateString(children, truncate)}
         </TagName>
-    )
-}
-
+    );
+};

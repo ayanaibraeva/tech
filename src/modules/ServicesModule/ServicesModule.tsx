@@ -7,16 +7,28 @@ import { useQueryServices } from "./api/useQueryServices.tsx";
 import { Tilt } from "react-tilt";
 import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { useLocation } from "react-router-dom";
-import {useTranslation} from "react-i18next";
-import {Breadcrumbs} from "../../UI/Breadcrumbs/Breadcrums.tsx";
+import { useTranslation } from "react-i18next";
+import { Breadcrumbs } from "../../UI/Breadcrumbs/Breadcrums.tsx";
+
+interface ServiceType {
+    id: string;
+    name: string;
+}
+
+interface Service {
+    id: string;
+    icon: string;
+    title: string;
+    description: string;
+    types: ServiceType[];
+}
 
 export const ServicesModule = () => {
-
     const { data: dataNames, isLoading: isLoadingNames, isError: isErrorNames } = useServicesTypesQuery();
     const { data: dataServices, isLoading: isLoadingServices, isError: isErrorServices } = useQueryServices();
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
-    const [activeName, setActiveName] = useState("");
+    const [activeName, setActiveName] = useState<string>("");
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -35,17 +47,17 @@ export const ServicesModule = () => {
     if (!dataNames || !dataServices) return null;
 
     const filteredServices = activeName
-        ? dataServices?.filter((service) =>
+        ? dataServices?.filter((service: Service) =>
             service.types.some((type) => type.name === activeName)
         )
         : [];
 
     return (
         <div>
-            <Breadcrumbs currentPage={t("development")}/>
+            <Breadcrumbs currentPage={t("development")} />
             <Typography variant="h2" className={classes.title}>{t("services")}</Typography>
             <div className={classes.caption}>
-                {dataNames?.map(({ id, name }) => (
+                {dataNames?.map(({ id, name }: ServiceType) => (
                     <div
                         key={id}
                         onClick={() => setActiveName(name)}
@@ -60,7 +72,7 @@ export const ServicesModule = () => {
 
             {filteredServices.length > 0 ? (
                 <div className={classes.card}>
-                    {filteredServices.map((service) => (
+                    {filteredServices.map((service: Service) => (
                         <Tilt
                             options={{
                                 max: 45,

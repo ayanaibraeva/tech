@@ -1,4 +1,13 @@
-export const ChevronDownHover = ({ width, height, className }) => {
+import {FC} from "react";
+
+interface ChevronDownProps {
+    width?: string | number;
+    height?: string | number;
+    color?: string;
+    className?: string;
+}
+
+export const ChevronDownHover:FC<ChevronDownProps> = ({ width, height, className }) => {
 
     return (
         <svg

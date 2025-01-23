@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export const useScrollToTop = (excludePaths = []) => {
+export const useScrollToTop = (excludePaths: string[] = []) => {
     const { pathname, state } = useLocation();
 
     useEffect(() => {

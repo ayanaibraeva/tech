@@ -9,13 +9,15 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 export const ApplicationForm = () => {
-    const { t } = useTranslation();
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" });
-    const { mutate, isLoading } = useFormQuery();
+    const { t }:any = useTranslation();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }, reset }:any = useForm({ mode: "onBlur" });
+    const { mutate, isLoading }:any = useFormQuery();
 
-    const onSubmit = (data) => {
+    const onSubmit = (data:any) => {
         mutate(data, {
             onSuccess: () => {
                 toast.success(`${t("faq.toastForm")}`, { position: "top-right" });

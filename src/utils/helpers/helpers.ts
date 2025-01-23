@@ -1,7 +1,10 @@
-import {lazy} from "react";
+import {ComponentType, lazy} from "react";
 
-export const loadComponent = (path, componentName) => {
+export const loadComponent = (
+    path: () => Promise<{ [key: string]:ComponentType<any> }>,
+    componentName: string
+) => {
     return lazy(() =>
-        path().then((module) => ({ default: module[componentName] })),
-    )
-}
+        path().then((module) => ({ default: module[componentName] }))
+    );
+};

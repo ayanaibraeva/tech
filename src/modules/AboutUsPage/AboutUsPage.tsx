@@ -9,7 +9,7 @@ import { Breadcrumbs } from "../../UI/Breadcrumbs/Breadcrums.tsx";
 
 export const AboutUsPage = () => {
 
-    const { data, loading, error } = useCounterQuery();
+    const { data, isLoading, error } = useCounterQuery();
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
     const { t } = useTranslation();
@@ -27,7 +27,7 @@ export const AboutUsPage = () => {
         return null;
     };
 
-    if (loading) return <Loader />;
+    if (isLoading) return <Loader />;
     if (error) return <div>...error</div>;
     if (!data) return null;
 

@@ -1,4 +1,12 @@
-export const LeftIcon = ({ width, height, color }) => {
+import {FC} from "react";
+
+interface LeftIconProps {
+    width?: string | number;
+    height?: string | number;
+    color?: string;
+}
+
+export const LeftIcon:FC<LeftIconProps> = ({ width, height, color }) => {
     return(
         <svg
             width={width}

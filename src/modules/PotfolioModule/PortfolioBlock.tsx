@@ -1,6 +1,5 @@
 import classes from "./PortfolioBlock.module.scss";
-
-import { Children, useRef, useState } from "react";
+import { Children, useRef, useState, CSSProperties, ReactNode } from "react";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
 import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { usePortfolioQuery } from "./api/usePortfolioQuery.tsx";
@@ -11,17 +10,21 @@ import { useTranslation } from "react-i18next";
 
 const MAX_VISIBILITY = 3;
 
-const Carousel = ({ children }) => {
-    const [active, setActive] = useState(2);
-    const [startX, setStartX] = useState(null);
-    const count = Children.count(children);
-    const portfolio = useRef();
+interface CarouselProps {
+    children: ReactNode;
+}
 
-    const handleTouchStart = (e) => {
+const Carousel = ({ children }: CarouselProps) => {
+    const [active, setActive] = useState<number>(2);
+    const [startX, setStartX] = useState<number | null>(null);
+    const count = Children.count(children);
+    const portfolio = useRef<HTMLDivElement>(null);
+
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
         setStartX(e.touches[0].clientX);
     };
 
-    const handleTouchMove = (e) => {
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
         if (!startX) return;
 
         const diffX = startX - e.touches[0].clientX;
@@ -52,6 +55,7 @@ const Carousel = ({ children }) => {
                 )}
                 {Children.map(children, (child, i) => (
                     <div
+                        key={i}
                         className={classes.cardContainer}
                         style={{
                             "--active": i === active ? 1 : 0,
@@ -61,7 +65,7 @@ const Carousel = ({ children }) => {
                             pointerEvents: active === i ? "auto" : "none",
                             opacity: Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1",
                             display: Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block",
-                        }}
+                        } as CSSProperties}
                     >
                         {child}
                     </div>
@@ -77,10 +81,10 @@ const Carousel = ({ children }) => {
 };
 
 export const PortfolioBlock = () => {
-    const { data, loading, error } = usePortfolioQuery();
+    const { data, isLoading, error } = usePortfolioQuery();
     const { t } = useTranslation();
 
-    if (loading) return <Loader />;
+    if (isLoading) return <Loader />;
     if (error) return <div>...error</div>;
     if (!data) return null;
 
@@ -90,7 +94,7 @@ export const PortfolioBlock = () => {
                 {t("header.portfolio")}
             </Typography>
             <Carousel>
-                {data.map((item, i) => (
+                {data.map((item: { title: string; description: string; image: string; link: string }, i: number) => (
                     <div key={i} className={classes.card}>
                         <Typography color="activeColor" variant="h2">
                             {item.title}

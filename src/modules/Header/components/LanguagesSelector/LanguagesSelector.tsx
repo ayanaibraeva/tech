@@ -1,24 +1,23 @@
 import classes from "./LanguageSelector.module.scss";
-
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useRef, useState} from "react";
-import {ChevronDown} from "../../../../assets/Icons/ChevronDown.tsx";
-import {useOutsideClick} from "../../../../utils/hooks/useOutsideClick.ts";
+import React, {RefObject, useRef, useState} from "react";
+import { ChevronDown } from "../../../../assets/Icons/ChevronDown.tsx";
+import { useOutsideClick } from "../../../../utils/hooks/useOutsideClick.ts";
 
-export const LanguageSelector = () => {
-
+export const LanguageSelector: React.FC = () => {
     const { i18n } = useTranslation();
-    const [activeList, setActiveList] = useState<boolean | null>(null);
-    const ref = useRef(null);
+    const [activeList, setActiveList] = useState<boolean>(false);
+    const ref = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const location = useLocation();
 
-    useOutsideClick(ref, () => setActiveList(null));
-    const changeLanguage = (lng) => {
+    useOutsideClick(ref as RefObject<HTMLElement>, () => setActiveList(false));
+
+    const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
-        setActiveList(null);
-        window.location.reload()
+        setActiveList(false);
+        window.location.reload();
 
         const currentPath = location.pathname + location.search;
         navigate(currentPath, { replace: true });

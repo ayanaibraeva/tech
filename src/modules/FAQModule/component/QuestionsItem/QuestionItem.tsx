@@ -1,14 +1,27 @@
 import classes from "./QuestionItem.module.scss";
 
-import {useContext, useRef} from "react";
-import {QuestionsContext} from "../Questions/Questions.tsx";
-import {Typography} from "../../../../UI/Typography/Typography.tsx";
-import {ChevronDown} from "../../../../assets/Icons/ChevronDown.tsx";
+import React, { useContext, useRef } from "react";
+import { QuestionsContext } from "../Questions/Questions.tsx";
+import { Typography } from "../../../../UI/Typography/Typography.tsx";
+import { ChevronDown } from "../../../../assets/Icons/ChevronDown.tsx";
 
-export const QuestionItem = ({ children, value, trigger, ...props}) => {
 
-    const {selected, setSelected} = useContext(QuestionsContext);
-    const ref = useRef(null);
+interface QuestionItemProps {
+    children: React.ReactNode;
+    value: string;
+    trigger: string;
+    [key: string]: any;
+}
+
+
+interface QuestionsContextType {
+    selected: string | null;
+    setSelected: (value: string | null) => void;
+}
+
+export const QuestionItem: React.FC<QuestionItemProps> = ({ children, value, trigger, ...props }) => {
+    const { selected, setSelected } = useContext(QuestionsContext) as QuestionsContextType;
+    const ref = useRef<HTMLDivElement | null>(null);
     const open = selected === value;
 
     return (
@@ -18,7 +31,7 @@ export const QuestionItem = ({ children, value, trigger, ...props}) => {
                 onClick={() => setSelected(open ? null : value)}
                 className={classes["header"]}
             >
-                <Typography variant="h4" >
+                <Typography variant="h4">
                     {trigger}
                 </Typography>
                 <div>
@@ -39,5 +52,5 @@ export const QuestionItem = ({ children, value, trigger, ...props}) => {
                 </div>
             </div>
         </li>
-    )
-}
+    );
+};

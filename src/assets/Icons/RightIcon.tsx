@@ -1,4 +1,12 @@
-export const RightIcon = ({ width, height, color }) => {
+import {FC} from "react";
+
+interface RightIconProps {
+    width?: string | number;
+    height?: string | number;
+    color?: string;
+}
+
+export const RightIcon:FC<RightIconProps> = ({ width, height, color }) => {
     return (
         <svg
             width={width}
