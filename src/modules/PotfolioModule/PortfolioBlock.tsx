@@ -86,7 +86,7 @@ export const PortfolioBlock = () => {
 
     if (isLoading) return <Loader />;
     if (error) return <div>...error</div>;
-    if (!data) return null;
+    if (!data || data.length === 0) return null;
 
     return (
         <MultiContainer>

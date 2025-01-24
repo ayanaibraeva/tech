@@ -1,4 +1,5 @@
 import classes from "./OurTeam.module.scss";
+
 import { useTeamQuery } from "./api/useTeamQuery.tsx";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
 import { Typography } from "../../UI/Typography/Typography.tsx";
@@ -26,7 +27,7 @@ export const OurTeam = () => {
 
     if (isLoading) return <Loader />;
     if (isError) return <div>...error</div>;
-    if (!data) return null;
+    if (!data || data.length === 0) return null;
 
     return (
         <MultiContainer>
