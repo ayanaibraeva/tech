@@ -84,7 +84,7 @@ export const SubLinks: React.FC<SubLinksProps> = ({ closeMenu }) => {
                 ref={dropdownRef}
                 className={`${classes.subForm} ${isOpen ? classes.open : ""}`}
             >
-                {serviceTypes?.map((item) => (
+                {serviceTypes.map && serviceTypes.map((item) => (
                     <div
                         key={item.id}
                         className={classes.subFormContent}
