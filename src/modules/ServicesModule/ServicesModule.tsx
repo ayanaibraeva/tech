@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Typography } from "../../UI/Typography/Typography.tsx";
 import { useServicesTypesQuery } from "../Header/api/useServicesTypesQuery.tsx";
 import { useQueryServices } from "./api/useQueryServices.tsx";
-import { Tilt } from "react-tilt";
+import Tilt from "react-parallax-tilt";
 import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -74,11 +74,10 @@ export const ServicesModule = () => {
                 <div className={classes.card}>
                     {filteredServices.map((service: Service) => (
                         <Tilt
-                            options={{
-                                max: 45,
-                                scale: 1,
-                                speed: 450
-                            }}
+                            tiltMaxAngleX={45}
+                            tiltMaxAngleY={45}
+                            scale={1.05}
+                            transitionSpeed={450}
                             key={service.id}
                             className={classes.activeComponent}
                         >
