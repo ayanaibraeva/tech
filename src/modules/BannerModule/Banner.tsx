@@ -22,13 +22,17 @@ export const Banner = () => {
 
     if (isLoading) return <Loader />;
     if (error) return <div>...error</div>;
-    if (!data) return null;
+    if(!data) return null;
+
+    const banners = Array.isArray(data) ? data : [];
+
+    const telegramLink = footerData?.[0]?.telegram_link || "#";
 
     return (
         <MultiContainer>
             <>
-                {data.map((item: BannerItem, index: number) => (
-                    <div key={item.id || index} className={classes.banner}>
+                {banners.map((item: BannerItem, index: number) => (
+                    <div key={`${item.id || index}`} className={classes.banner}>
                         <div className={classes.bannerHeading}>
                             <Typography variant="h1">{item.title}</Typography>
                             <Typography
@@ -41,7 +45,7 @@ export const Banner = () => {
 
                             {footerData && (
                                 <a
-                                    href={footerData[0]?.telegram_link}
+                                    href={telegramLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -52,7 +56,7 @@ export const Banner = () => {
                             )}
                         </div>
                         <div className={classes.bannerImage}>
-                            <img src={bannerImage} alt="" />
+                            <img src={bannerImage || "placeholder.png"} alt={item.title || "Banner"} />
                         </div>
                     </div>
                 ))}

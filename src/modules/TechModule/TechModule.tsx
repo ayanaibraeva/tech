@@ -7,7 +7,6 @@ import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-
 interface TechType {
     id: string;
     name: string;
@@ -29,13 +28,16 @@ export const TechModule = () => {
 
     if (isLoadingTypes || isLoadingTech) return <Loader />;
     if (isErrorTypes || isErrorTech) return <div>Ошибка загрузки данных</div>;
-    if (!techData || !techTypes) return null;
+
+
+    const types = Array.isArray(techTypes) ? techTypes : [];
+    const techItems = Array.isArray(techData) ? techData : [];
 
     const filteredTech = activeName
-        ? techData?.filter((tech: Tech) =>
-            tech.types.some((type: TechType) => type.name === activeName)
+        ? techItems.filter((tech: Tech) =>
+            tech.types?.some((type: TechType) => type.name === activeName)
         )
-        : techData || [];
+        : techItems;
 
     return (
         <div>
@@ -44,9 +46,9 @@ export const TechModule = () => {
                 <Typography variant="h3">{t("technologyP")}</Typography>
             </div>
             <div className={classes.caption}>
-                {techTypes?.map(({ id, name }: TechType, index: number) => (
+                {types.map(({ id, name }: TechType, index: number) => (
                     <div
-                        key={id || `${name}-${index}`}
+                        key={`${id || name}-${index}`}
                         onClick={() => setActiveName(name)}
                     >
                         <button className={activeName === name ? classes.activeButton : ""}>
@@ -58,14 +60,11 @@ export const TechModule = () => {
 
             {filteredTech.length > 0 ? (
                 <div className={classes.card}>
-                    {filteredTech?.map((tech: Tech) => (
-                        <div
-                            key={tech.id}
-                            className={classes.cardContent}
-                        >
+                    {filteredTech.map((tech: Tech) => (
+                        <div key={tech.id} className={classes.cardContent}>
                             <img
-                                src={tech.icon}
-                                alt={tech.name}
+                                src={tech.icon || "placeholder.png"}
+                                alt={tech.name || "Technology"}
                             />
                             <span>{tech.name}</span>
                         </div>
@@ -73,9 +72,7 @@ export const TechModule = () => {
                 </div>
             ) : (
                 <div>
-                    <span>
-                        Нет данных для выбранного направления
-                    </span>
+                    <span>Нет данных для выбранного направления</span>
                 </div>
             )}
         </div>
