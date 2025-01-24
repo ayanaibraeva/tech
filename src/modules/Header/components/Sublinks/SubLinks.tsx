@@ -63,9 +63,10 @@ export const SubLinks: React.FC<SubLinksProps> = ({ closeMenu }) => {
 
     if (isLoading) return <div>...</div>;
     if (error) return <div>...error</div>;
-    if (!data) return null;
+    if (!data || !Array.isArray(data)) return null;
 
     const serviceTypes = data as ServiceType[];
+
 
     return (
         <div>
@@ -83,7 +84,7 @@ export const SubLinks: React.FC<SubLinksProps> = ({ closeMenu }) => {
                 ref={dropdownRef}
                 className={`${classes.subForm} ${isOpen ? classes.open : ""}`}
             >
-                {serviceTypes.map((item) => (
+                {serviceTypes?.map((item) => (
                     <div
                         key={item.id}
                         className={classes.subFormContent}
