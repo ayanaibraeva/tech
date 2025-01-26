@@ -27,8 +27,7 @@ export const TechModule = () => {
     const [activeName, setActiveName] = useState<string | undefined>(undefined);
 
     if (isLoadingTypes || isLoadingTech) return <Loader />;
-    if (isErrorTypes || isErrorTech) return <div>Ошибка загрузки данных</div>;
-
+    if (isErrorTypes || isErrorTech) return <div>...error</div>;
 
     const types = Array.isArray(techTypes) ? techTypes : [];
     const techItems = Array.isArray(techData) ? techData : [];
@@ -46,11 +45,8 @@ export const TechModule = () => {
                 <Typography variant="h3">{t("technologyP")}</Typography>
             </div>
             <div className={classes.caption}>
-                {types.map(({ id, name }: TechType, index: number) => (
-                    <div
-                        key={`${id || name}-${index}`}
-                        onClick={() => setActiveName(name)}
-                    >
+                {types.map(({ id, name }: TechType) => (
+                    <div key={id} onClick={() => setActiveName(name)}>
                         <button className={activeName === name ? classes.activeButton : ""}>
                             {name}
                         </button>

@@ -1,5 +1,5 @@
 import classes from "./PortfolioBlock.module.scss";
-import { Children, useRef, useState, CSSProperties, ReactNode } from "react";
+import React, { Children, useRef, useState, CSSProperties, ReactNode } from "react";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
 import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { usePortfolioQuery } from "./api/usePortfolioQuery.tsx";
@@ -49,7 +49,11 @@ const Carousel = ({ children }: CarouselProps) => {
         >
             <div className={classes.carousel}>
                 {active > 0 && (
-                    <button className={`${classes.nav} ${classes.left}`} onClick={() => setActive((i) => i - 1)}>
+                    <button
+                        className={`${classes.nav} ${classes.left}`}
+                        onClick={() => setActive((i) => i - 1)}
+                        aria-label="buttonPrevious"
+                    >
                         <LeftIcon width="20px" height="20px" color="white" />
                     </button>
                 )}
@@ -71,7 +75,11 @@ const Carousel = ({ children }: CarouselProps) => {
                     </div>
                 ))}
                 {active < count - 1 && (
-                    <button className={`${classes.nav} ${classes.right}`} onClick={() => setActive((i) => i + 1)}>
+                    <button
+                        className={`${classes.nav} ${classes.right}`}
+                        onClick={() => setActive((i) => i + 1)}
+                        aria-label="buttonNext"
+                    >
                         <RightIcon width="20px" height="20px" color="white" />
                     </button>
                 )}
@@ -85,8 +93,8 @@ export const PortfolioBlock = () => {
     const { t } = useTranslation();
 
     if (isLoading) return <Loader />;
-    if (error) return <div>...error</div>;
-    if (!data || data.length === 0) return null;
+    if (error) return <div>Error: {error.message}</div>;
+    if (!Array.isArray(data) || data.length === 0) return null;
 
     return (
         <MultiContainer>

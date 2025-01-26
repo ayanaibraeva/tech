@@ -15,8 +15,8 @@ export const FooterBottom = () => {
     const { data, isLoading, error } = useFooterQuery();
 
     if (isLoading) return <Loader />;
-    if (error) return <div>...error</div>;
-    if (!data) return null;
+    if (error) return <div>Error: {error.message}</div>;
+    if (!Array.isArray(data) || data.length === 0) return null;
 
     return (
         <div>
@@ -24,10 +24,10 @@ export const FooterBottom = () => {
                 data.map((item: FooterItem, id: number) => (
                     <div key={id} className={classes.footerBottom}>
                         {item.work_schedule && (
-                            <a className={classes.icons}>
+                            <span className={classes.icons}>
                                 <ScheduleIcon />
                                 {item.work_schedule}
-                            </a>
+                            </span>
                         )}
                         {item.phone_number && (
                             <a

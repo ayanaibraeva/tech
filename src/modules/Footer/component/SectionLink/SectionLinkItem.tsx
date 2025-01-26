@@ -1,4 +1,4 @@
-import classes from "../Header/Header.module.scss";
+import classes from "../../../Header/Header.module.scss";
 import { NavLink } from "react-router-dom";
 import React from "react";
 

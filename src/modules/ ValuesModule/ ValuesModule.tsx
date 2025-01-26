@@ -1,4 +1,5 @@
 import classes from "./ValuesModule.module.scss";
+
 import { useValuesQuery } from "./api/useValuesQuery";
 import { Loader } from "../../pages/LoaderPage/Loader";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer";
@@ -18,8 +19,8 @@ export const ValuesModule = () => {
     const { t } = useTranslation();
 
     if (isLoading) return <Loader />;
-    if (error) return <div>...error</div>;
-    if (!data) return null;
+    if (error) return <div>Error: {error.message}</div>;
+    if (!Array.isArray(data) || data.length === 0) return null;
 
     return (
         <MultiContainer>

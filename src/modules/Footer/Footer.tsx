@@ -1,41 +1,32 @@
 import classes from "./Footer.module.scss";
-
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FooterContact } from "./component/FooterContact/FooterContact.tsx";
-import { SectionLinkItem } from "./SectionLinkItem.tsx";
+import { SectionLinkItem } from "./component/SectionLink/SectionLinkItem.tsx";
 import { FooterBottom } from "./component/FooterBottom/FooterBottom.tsx";
 import { useTranslation } from "react-i18next";
 import { LogoIcon } from "../../assets/Icons/LogoIcon.tsx";
 
 export const Footer = () => {
-    const navigate = useNavigate();
     const { t } = useTranslation();
-
-    const handleNavigate = (path: string) => {
-        navigate(path);
-    };
 
     return (
         <>
             <div className={classes.hr} />
             <MultiContainer>
                 <footer className={classes.footer}>
-                    <div
-                        className={classes.footerLogo}
-                        onClick={() => handleNavigate('/')}
-                    >
+                    <Link to="/" className={classes.footerLogo} aria-label={t("header.home")}>
                         <LogoIcon />
-                    </div>
+                    </Link>
                     <div className={classes.footerContent}>
                         <FooterContact />
                         <div className={classes.footerLink}>
-                            <div className={classes.link} onClick={() => handleNavigate('/about-company')}>
+                            <Link to="/about-company" className={classes.link}>
                                 <span>{t("header.about")}</span>
-                            </div>
-                            <div className={classes.link} onClick={() => handleNavigate('/services')}>
+                            </Link>
+                            <Link to="/services" className={classes.link}>
                                 <span>{t("header.services")}</span>
-                            </div>
+                            </Link>
                             <SectionLinkItem
                                 to="portfolio"
                                 label={t("header.portfolio")}

@@ -3,9 +3,9 @@ import {axiosInstance} from "../../../utils/axiosInstance/axiosInstance.ts";
 import {BASE_URL} from "../../../utils/constants/constants.ts";
 
 type questionsDataType = {
-    "id": 0,
-    "question": "string",
-    "answer": "string"
+    "id": number,
+    "question": string,
+    "answer": string
 };
 export const useQuestionsQuery = () => {
     return useQuery<questionsDataType[], Error>(

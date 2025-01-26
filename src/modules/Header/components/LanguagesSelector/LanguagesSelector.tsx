@@ -34,6 +34,7 @@ export const LanguageSelector: React.FC = () => {
                 type="button"
                 className={classes.selectedOption}
                 onClick={() => setActiveList((prev) => !prev)}
+                aria-label="buttonLanguages"
             >
                 {languages.find((lang) => lang.code === i18n.language)?.label}
                 <ChevronDown

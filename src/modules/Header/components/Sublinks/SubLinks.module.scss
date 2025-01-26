@@ -27,6 +27,10 @@
     pointer-events: none;
   }
 
+  @media(max-width: 520px) {
+    padding-bottom: 100px;
+  }
+
   &.open {
     opacity: 1;
     pointer-events: auto;

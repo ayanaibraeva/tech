@@ -21,8 +21,8 @@ export const Banner = () => {
     const { t } = useTranslation();
 
     if (isLoading) return <Loader />;
-    if (error) return <div>...error</div>;
-    if(!data) return null;
+    if (error) return <div>Error: {error.message}</div>;
+    if (!Array.isArray(data) || data.length === 0) return null;
 
     const banners = Array.isArray(data) ? data : [];
 

@@ -27,7 +27,7 @@ export const OurTeam = () => {
 
     if (isLoading) return <Loader />;
     if (isError) return <div>...error</div>;
-    if (!data || data.length === 0) return null;
+    if (!Array.isArray(data) || data.length === 0) return null;
 
     return (
         <MultiContainer>
@@ -62,7 +62,7 @@ export const OurTeam = () => {
                         },
                     }}
                 >
-                    {data.map((item: TeamMember) => ( // Specified type for item
+                    {data.map((item: TeamMember) => (
                         <SwiperSlide key={item.id}>
                             <div className={classes.card}>
                                 <div className={classes.cardImg}>
@@ -83,14 +83,16 @@ export const OurTeam = () => {
             <div className={classes.btn}>
                 <button
                     className={classes.arrowLeft}
-                    onClick={() => swiperRef.current?.swiper.slidePrev()} // Added null check
+                    onClick={() => swiperRef.current?.swiper.slidePrev()}
+                    aria-label="buttonPrevious"
                 >
                     <LeftIcon width="16px" height="16px" color="white" />
                 </button>
 
                 <button
                     className={classes.arrowRight}
-                    onClick={() => swiperRef.current?.swiper.slideNext()} // Added null check
+                    onClick={() => swiperRef.current?.swiper.slideNext()}
+                    aria-label={t("buttonNext")}
                 >
                     <RightIcon width="16px" height="16px" color="white" />
                 </button>

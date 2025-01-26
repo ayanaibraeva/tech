@@ -1,7 +1,7 @@
 import classes from "./Header.module.scss";
 
 import { useState, useEffect } from "react";
-import { SectionLinkItem } from "../Footer/SectionLinkItem.tsx";
+import { SectionLinkItem } from "../Footer/component/SectionLink/SectionLinkItem.tsx";
 import { SubLinks } from "./components/Sublinks/SubLinks.tsx";
 import { Typography } from "../../UI/Typography/Typography.tsx";
 import { useNavigate } from "react-router-dom";

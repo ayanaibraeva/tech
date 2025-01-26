@@ -43,11 +43,11 @@ export const ServicesModule = () => {
     }, [dataNames, nameFromUrl]);
 
     if (isLoadingNames || isLoadingServices) return <Loader />;
-    if (isErrorNames || isErrorServices) return <div>Ошибка загрузки данных</div>;
-    if (!dataNames || !dataServices) return null;
+    if (isErrorNames || isErrorServices) return <div>...error</div>;
+    if (!Array.isArray(dataNames) || !Array.isArray(dataServices)) return null;
 
     const filteredServices = activeName
-        ? dataServices?.filter((service: Service) =>
+        ? dataServices.filter((service: Service) =>
             service.types.some((type) => type.name === activeName)
         )
         : [];
@@ -57,7 +57,7 @@ export const ServicesModule = () => {
             <Breadcrumbs currentPage={t("development")} />
             <Typography variant="h2" className={classes.title}>{t("services")}</Typography>
             <div className={classes.caption}>
-                {dataNames?.map(({ id, name }: ServiceType) => (
+                {dataNames.map(({ id, name }: ServiceType) => (
                     <div
                         key={id}
                         onClick={() => setActiveName(name)}

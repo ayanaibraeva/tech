@@ -28,8 +28,8 @@ export const StorageModule: React.FC = () => {
     const activeTitle = components.find((comp) => comp.id === activeComponent)?.title;
 
     if (isLoading) return <Loader />;
-    if (error) return <div>...error</div>;
-    if (!data) return null;
+    if (error) return <div>Error: {error.message}</div>;
+    if (!Array.isArray(data) || data.length === 0) return null;
 
     return (
         <MultiContainer>

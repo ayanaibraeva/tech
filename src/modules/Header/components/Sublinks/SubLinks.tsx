@@ -62,8 +62,8 @@ export const SubLinks: React.FC<SubLinksProps> = ({ closeMenu }) => {
     }, []);
 
     if (isLoading) return <div>...</div>;
-    if (error) return <div>...error</div>;
-    if (!data || !Array.isArray(data)) return null;
+    if (error) return <div>Error: {error.message}</div>;
+    if (!Array.isArray(data) || data.length === 0) return null;
 
     const serviceTypes = data as ServiceType[];
 
