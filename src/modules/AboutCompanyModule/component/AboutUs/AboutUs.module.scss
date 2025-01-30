@@ -86,4 +86,9 @@
   background-color: var(--active-color);
   border: 1px solid var(--active-color);
   box-shadow: 0 0 6px 0 rgb(142, 82, 221);
+  @media(max-width: 520px) {
+    background: var(--fone-file);
+    box-shadow: none;
+    border: 1px solid #FFF;
+  }
 }

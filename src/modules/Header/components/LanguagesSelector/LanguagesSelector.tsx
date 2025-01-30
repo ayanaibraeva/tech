@@ -1,7 +1,8 @@
 import classes from "./LanguageSelector.module.scss";
+
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import React, {RefObject, useRef, useState} from "react";
+import React, { RefObject, useRef, useState, useEffect } from "react";
 import { ChevronDown } from "../../../../assets/Icons/ChevronDown.tsx";
 import { useOutsideClick } from "../../../../utils/hooks/useOutsideClick.ts";
 
@@ -14,6 +15,12 @@ export const LanguageSelector: React.FC = () => {
 
     useOutsideClick(ref as RefObject<HTMLElement>, () => setActiveList(false));
 
+    useEffect(() => {
+        if (!i18n.language) {
+            i18n.changeLanguage('ru-RU');
+        }
+    }, [i18n]);
+
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
         setActiveList(false);
@@ -24,9 +31,11 @@ export const LanguageSelector: React.FC = () => {
     };
 
     const languages = [
-        { code: "ru", label: "RU" },
+        { code: "ru-RU", label: "RU" },
         { code: "en", label: "EN" },
     ];
+
+    const currentLanguageLabel = languages.find((lang) => lang.code === i18n.language)?.label;
 
     return (
         <div ref={ref} className={classes.headerSelect}>
@@ -36,7 +45,7 @@ export const LanguageSelector: React.FC = () => {
                 onClick={() => setActiveList((prev) => !prev)}
                 aria-label="buttonLanguages"
             >
-                {languages.find((lang) => lang.code === i18n.language)?.label}
+                {currentLanguageLabel || "RU"}
                 <ChevronDown
                     height="24px"
                     width="24px"

@@ -88,7 +88,7 @@ export const ApplicationForm = () => {
                 />
             </div>
             <button type="submit" disabled={isLoading} className={classes.submitButton}>
-                <Typography color="white" variant="h4" >{t("faq.send")}</Typography>
+                <Typography color="white" variant="button" >{t("faq.send")}</Typography>
             </button>
         </form>
     );

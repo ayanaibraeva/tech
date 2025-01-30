@@ -41,7 +41,7 @@ export const AboutUs = () => {
                             {item.description}
                         </Typography>
                         <button onClick={handleLearnMore} className={classes.btn}>
-                            <Typography variant="h4">{t("buttonMore")}</Typography>
+                            <Typography variant="button" color="white">{t("buttonMore")}</Typography>
                             <ChevronRight color="#FFF" height="24px" width="24px" />
                         </button>
                     </div>

@@ -6,37 +6,33 @@
   border-left: 1px solid #FFF;
   background: var(--fone-file);
   width: 876px;
-  display: flex;
   gap: 30px;
   flex-wrap: wrap;
   opacity: 0;
-  z-index: 1100;
   transition: max-height 1s ease-out;
   right: 15%;
-  top: 100%;
+  top: 101%;
   pointer-events: none;
+  display: none;
 
   @media(max-width: 1000px) {
-    position: fixed;
-    top: 270px;
+    position: relative;
+    top: 0;
+    padding: 0;
+    margin-top: 30px;
     right: 0;
     width: 100%;
     overflow-y: auto;
-    z-index: 1200;
     border: none;
     pointer-events: none;
-  }
-
-  @media(max-width: 520px) {
-    padding-bottom: 100px;
   }
 
   &.open {
     opacity: 1;
     pointer-events: auto;
     max-height: 100vh;
-    position: absolute;
     transition: max-height 0.5s ease-out;
+    display: flex;
   }
 
   &Content {
@@ -52,12 +48,17 @@
     }
 
     p {
-      color: #FFF;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      color: rgb(255, 255, 255);
       font-family: Gilroy, sans-serif;
       font-size: 18px;
-      font-style: normal;
       font-weight: 600;
-      line-height: 125%;
+      line-height: 120%;
+      letter-spacing: 0;
+      @media(max-width: 1000px) {
+        font-size: 22px;
+      }
     }
 
     span {
@@ -85,18 +86,19 @@
 }
 
 .title {
-   display: flex;
-   justify-content: space-between;
-   transition: color 0.5s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.5s;
 
-   &:hover {
-     color: var(--active-color);
+  &:hover {
+    color: var(--active-color);
 
-     .nameIcon path {
-       fill: var(--active-color);
-     }
-   }
- }
+    .nameIcon path {
+      fill: var(--active-color);
+    }
+  }
+}
 
 
 .toggle {
@@ -113,7 +115,7 @@
   gap: 8px;
 
   @media(max-width: 1000px) {
-    position: absolute;
+    justify-content: space-between;
     left: 40px;
     z-index: 1300;
   }

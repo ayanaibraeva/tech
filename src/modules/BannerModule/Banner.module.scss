@@ -19,7 +19,7 @@
     margin-top: 16px;
   }
 
-  button {
+  .btn {
     margin-top: 24px;
     display: flex;
     padding: 10px 36px;
@@ -29,10 +29,13 @@
     color: white;
     transition: 0.5s;
   }
-  button:hover {
+  .btn:hover {
     background-color: var(--active-color);
     border: 1px solid var(--active-color);
     box-shadow: 0 0 6px 0 #8E52DD;
+    @media(max-width: 520px){
+      display: none;
+    }
   }
 
   &Image {
@@ -45,7 +48,6 @@
         height: 255px;
       }
       @media(max-width: 450px){
-        //margin-top: 35px;
         width: 196.19px;
         height: 179.82px;
       }

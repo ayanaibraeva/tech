@@ -49,9 +49,12 @@ export const Banner = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <button>
-                                        <Typography variant="h4">{t("header.button")}</Typography>
-                                    </button>
+                                    <Typography
+                                        className={classes.btn}
+                                        variant="button"
+                                    >
+                                        {t("header.button")}
+                                    </Typography>
                                 </a>
                             )}
                         </div>

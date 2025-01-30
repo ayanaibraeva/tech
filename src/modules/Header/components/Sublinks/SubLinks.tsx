@@ -1,5 +1,4 @@
 import classes from "./SubLinks.module.scss";
-
 import React, { useRef, useState, useEffect } from "react";
 import { useServicesTypesQuery } from "../../api/useServicesTypesQuery.tsx";
 import { ChevronRight } from "../../../../assets/Icons/ChevronRight.tsx";
@@ -19,7 +18,6 @@ interface ServiceType {
 
 export const SubLinks: React.FC<SubLinksProps> = ({ closeMenu }) => {
     const { data, isLoading, error } = useServicesTypesQuery();
-
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const navigate = useNavigate();
     const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -67,7 +65,6 @@ export const SubLinks: React.FC<SubLinksProps> = ({ closeMenu }) => {
 
     const serviceTypes = data as ServiceType[];
 
-
     return (
         <div>
             <div onClick={toggleSubForm} ref={toggleRef}>
@@ -84,7 +81,7 @@ export const SubLinks: React.FC<SubLinksProps> = ({ closeMenu }) => {
                 ref={dropdownRef}
                 className={`${classes.subForm} ${isOpen ? classes.open : ""}`}
             >
-                {serviceTypes.map && serviceTypes.map((item) => (
+                {serviceTypes.map((item) => (
                     <div
                         key={item.id}
                         className={classes.subFormContent}

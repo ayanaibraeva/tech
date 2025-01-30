@@ -114,7 +114,7 @@ export const Header = () => {
                                     rel="noopener noreferrer"
                                     className={classes.navBtn}
                                 >
-                                    <Typography variant="h4">{t("header.button")}</Typography>
+                                    <Typography color="white" variant="button">{t("header.button")}</Typography>
                                 </a>
                             )}
                         </div>
@@ -130,7 +130,7 @@ export const Header = () => {
                                         href={data[0]?.telegram_link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={classes.navBtn}
+                                        className={classes.navBtnTablet}
                                     >
                                         <Typography variant="h4">{t("header.button")}</Typography>
                                     </a>
@@ -150,31 +150,51 @@ export const Header = () => {
             </MultiContainer>
 
             <div className={`${classes.sidePanel} ${isMenuOpen ? classes.open : ''}`}>
-                <div
-                    className={classes.navbarList}
-                    onClick={() => {handleClickAbout(); closeMenu()}}
-                >
-                    <span>{t("header.about")}</span>
-                </div>
-                <div className={classes.sidePanelLinks}>
-                    {headerLinks.map(link => (
-                        <div key={link.id} onClick={closeMenu}>
-                            <SectionLinkItem
-                                key={link.id}
-                                to={link.label}
-                                label={link.title}
-                                className={classes.navbarList}
-                            />
-                        </div>
-                    ))}
-                    <div
-                        className={classes.navbarList}
-                        onClick={() => {handleClickContacts(); closeMenu();}}
+               <div className={classes.navbarList}>
+                   <div onClick={() => {handleClickAbout(); closeMenu()}}>
+                       <span>{t("header.about")}</span>
+                   </div>
+                   <SubLinks closeMenu={closeMenu}/>
+                   <div>
+                       {headerLinks.map(link => (
+                           <div
+                               key={link.id}
+                               onClick={closeMenu}
+                           >
+                               <SectionLinkItem
+                                   key={link.id}
+                                   to={link.label}
+                                   label={link.title}
+                                   className={classes.navbarList}
+                               />
+                           </div>
+                       ))}
+                   </div>
+                   <div onClick={closeMenu}>
+                       <SectionLinkItem
+                           to="ourTeam"
+                           label={t("team")}
+                           onClick={closeMenu}
+                       />
+                   </div>
+                   <div onClick={closeMenu}>
+                       <SectionLinkItem
+                           to="faq"
+                           label="FAQ"
+                           onClick={closeMenu}
+                       />
+                   </div>
+               </div>
+                {data && (
+                    <a
+                        href={data[0]?.telegram_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={classes.navMobile}
                     >
-                        <span>{t("header.contact")}</span>
-                    </div>
-                    <SubLinks closeMenu={closeMenu}/>
-                </div>
+                        <Typography color="white" variant="button">{t("header.button")}</Typography>
+                    </a>
+                )}
             </div>
 
             <div className={classes.hr} />

@@ -22,6 +22,8 @@ export const ValuesModule = () => {
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 
+
+
     return (
         <MultiContainer>
             <Typography variant="h2" className={classes.valuesHeading}>
