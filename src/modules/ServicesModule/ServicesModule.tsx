@@ -1,11 +1,9 @@
 import classes from "./ServicesModule.module.scss";
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Typography } from "../../UI/Typography/Typography.tsx";
 import { useServicesTypesQuery } from "../Header/api/useServicesTypesQuery.tsx";
 import { useQueryServices } from "./api/useQueryServices.tsx";
 import Tilt from "react-parallax-tilt";
-import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Breadcrumbs } from "../../UI/Breadcrumbs/Breadcrums.tsx";
@@ -24,11 +22,12 @@ interface Service {
 }
 
 export const ServicesModule = () => {
-    const { data: dataNames, isLoading: isLoadingNames, isError: isErrorNames } = useServicesTypesQuery();
-    const { data: dataServices, isLoading: isLoadingServices, isError: isErrorServices } = useQueryServices();
+    const { data: dataNames, isError: isErrorNames } = useServicesTypesQuery();
+    const { data: dataServices, isError: isErrorServices } = useQueryServices();
     const { t } = useTranslation();
 
     const [activeName, setActiveName] = useState<string>("");
+    const nameRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -42,7 +41,16 @@ export const ServicesModule = () => {
         }
     }, [dataNames, nameFromUrl]);
 
-    if (isLoadingNames || isLoadingServices) return <Loader />;
+    useEffect(() => {
+        if (activeName && nameRefs.current[activeName]) {
+            nameRefs.current[activeName].scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "start",
+            });
+        }
+    }, [activeName]);
+
     if (isErrorNames || isErrorServices) return <div>...error</div>;
     if (!Array.isArray(dataNames) || !Array.isArray(dataServices)) return null;
 
@@ -60,6 +68,7 @@ export const ServicesModule = () => {
                 {dataNames.map(({ id, name }: ServiceType) => (
                     <div
                         key={id}
+                        ref={(el) => (nameRefs.current[name] = el)} // Сохраняем ссылку на элемент
                         onClick={() => setActiveName(name)}
                         className={`${classes.line} ${activeName === name ? classes.active : ''}`}
                     >

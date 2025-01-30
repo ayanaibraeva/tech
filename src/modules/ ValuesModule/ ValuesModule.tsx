@@ -1,7 +1,6 @@
 import classes from "./ValuesModule.module.scss";
 
 import { useValuesQuery } from "./api/useValuesQuery";
-import { Loader } from "../../pages/LoaderPage/Loader";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer";
 import { Typography } from "../../UI/Typography/Typography";
 import { useTranslation } from "react-i18next";
@@ -14,11 +13,10 @@ type ValueType = {
 };
 
 export const ValuesModule = () => {
-    const { data, isLoading, error }: UseQueryResult<ValueType[], Error> = useValuesQuery();
+    const { data, error }: UseQueryResult<ValueType[], Error> = useValuesQuery();
 
     const { t } = useTranslation();
 
-    if (isLoading) return <Loader />;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

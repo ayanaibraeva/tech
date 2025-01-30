@@ -1,6 +1,5 @@
 import classes from "./FooterContact.module.scss";
 
-import { Loader } from "../../../../pages/LoaderPage/Loader.tsx";
 import { useFooterQuery } from "../../api/useFooterQuery.tsx";
 import { TelegramIcon } from "../../../../assets/Icons/TelegramIcon.tsx";
 import { InstagramIcon } from "../../../../assets/Icons/InstagramIcon.tsx";
@@ -15,9 +14,8 @@ interface FooterContactItem {
 }
 
 export const FooterContact = () => {
-    const { data, isLoading, error } = useFooterQuery();
+    const { data, error } = useFooterQuery();
 
-    if (isLoading) return <Loader />;
     if (error) return null;
     if (!Array.isArray(data) || data.length === 0) {
         return null;

@@ -1,6 +1,5 @@
 import classes from "./WorksModule.module.scss";
 
-import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { useWorksQuery } from "./api/useWorksQuery.tsx";
 import { Typography } from "../../UI/Typography/Typography.tsx";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
@@ -15,10 +14,9 @@ interface WorkItem {
 }
 
 export const WorksModule = () => {
-    const { data, isLoading, error } = useWorksQuery();
+    const { data, error } = useWorksQuery();
     const { t } = useTranslation();
 
-    if (isLoading) return <Loader />;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

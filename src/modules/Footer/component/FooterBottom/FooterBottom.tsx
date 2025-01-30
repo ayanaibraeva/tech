@@ -1,6 +1,5 @@
 import classes from "./FooterBottom.module.scss";
 
-import { Loader } from "../../../../pages/LoaderPage/Loader.tsx";
 import { useFooterQuery } from "../../api/useFooterQuery.tsx";
 import { NumberIcon } from "../../../../assets/Icons/NumberIcon.tsx";
 import { ScheduleIcon } from "../../../../assets/Icons/ScheduleIcon.tsx";
@@ -12,9 +11,8 @@ interface FooterItem {
 }
 
 export const FooterBottom = () => {
-    const { data, isLoading, error } = useFooterQuery();
+    const { data, error } = useFooterQuery();
 
-    if (isLoading) return <Loader />;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

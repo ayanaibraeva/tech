@@ -2,14 +2,13 @@ import classes from './AboutUsPage.module.scss';
 
 import { useState } from 'react';
 import { useCounterQuery } from '../AboutCompanyModule/api/useCounterQuery.tsx';
-import { Loader } from '../../pages/LoaderPage/Loader.tsx';
 import { Typography } from '../../UI/Typography/Typography.tsx';
 import { useTranslation } from "react-i18next";
 import { Breadcrumbs } from "../../UI/Breadcrumbs/Breadcrums.tsx";
 
 export const AboutUsPage = () => {
 
-    const { data, isLoading, error } = useCounterQuery();
+    const { data, error } = useCounterQuery();
     const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
     const { t } = useTranslation();
@@ -27,7 +26,6 @@ export const AboutUsPage = () => {
         return null;
     };
 
-    if (isLoading) return <Loader />;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

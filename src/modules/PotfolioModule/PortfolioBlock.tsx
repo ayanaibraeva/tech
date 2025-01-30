@@ -1,7 +1,6 @@
 import classes from "./PortfolioBlock.module.scss";
 import React, { Children, useRef, useState, CSSProperties, ReactNode } from "react";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
-import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { usePortfolioQuery } from "./api/usePortfolioQuery.tsx";
 import { Typography } from "../../UI/Typography/Typography.tsx";
 import { LeftIcon } from "../../assets/Icons/LeftIcon.tsx";
@@ -89,10 +88,9 @@ const Carousel = ({ children }: CarouselProps) => {
 };
 
 export const PortfolioBlock = () => {
-    const { data, isLoading, error } = usePortfolioQuery();
+    const { data, error } = usePortfolioQuery();
     const { t } = useTranslation();
 
-    if (isLoading) return <Loader />;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

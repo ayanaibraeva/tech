@@ -3,7 +3,6 @@ import classes from "./TechModule.module.scss";
 import { Typography } from "../../UI/Typography/Typography.tsx";
 import { useTechTypesQuery } from "./api/useTechTypesQuery.tsx";
 import { useTechQuery } from "./api/useTechQuery.tsx";
-import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -20,15 +19,13 @@ interface Tech {
 }
 
 export const TechModule = () => {
-    const { data: techTypes, isLoading: isLoadingTypes, isError: isErrorTypes } = useTechTypesQuery();
-    const { data: techData, isLoading: isLoadingTech, isError: isErrorTech } = useTechQuery();
+    const { data: techTypes, isError: isErrorTypes } = useTechTypesQuery();
+    const { data: techData, isError: isErrorTech } = useTechQuery();
     const { t } = useTranslation();
 
     const [activeName, setActiveName] = useState<string | undefined>(undefined);
 
-    if (isLoadingTypes || isLoadingTech) return <Loader />;
     if (isErrorTypes || isErrorTech) return <div>...error</div>;
-
     const types = Array.isArray(techTypes) ? techTypes : [];
     const techItems = Array.isArray(techData) ? techData : [];
 
@@ -45,10 +42,13 @@ export const TechModule = () => {
                 <Typography variant="h3">{t("technologyP")}</Typography>
             </div>
             <div className={classes.caption}>
-                {types.map(({ id, name }: TechType) => (
-                    <div key={id} onClick={() => setActiveName(name)}>
-                        <button className={activeName === name ? classes.activeButton : ""}>
-                            {name}
+                {types.map((type, index) => (
+                    <div
+                        key={index} // Используйте индекс как временное решение
+                        onClick={() => setActiveName(type.name)}
+                    >
+                        <button className={activeName === type.name ? classes.activeButton : ""}>
+                            {type.name}
                         </button>
                     </div>
                 ))}
@@ -57,7 +57,10 @@ export const TechModule = () => {
             {filteredTech.length > 0 ? (
                 <div className={classes.card}>
                     {filteredTech.map((tech: Tech) => (
-                        <div key={tech.id} className={classes.cardContent}>
+                        <div
+                            key={tech.id} // Убедитесь, что tech.id уникален
+                            className={classes.cardContent}
+                        >
                             <img
                                 src={tech.icon || "placeholder.png"}
                                 alt={tech.name || "Technology"}

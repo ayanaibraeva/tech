@@ -6,7 +6,6 @@ import { ApplicationForm } from "../ApplicationForm/ApplicationForm.tsx";
 import { MultiContainer } from "../../../../UI/MultiContainer/MultiContainer.tsx";
 import { Faq } from "../Faq/Faq.tsx";
 import { useQuestionsQuery } from "../../api/useQuestionsQuery.tsx";
-import { Loader } from "../../../../pages/LoaderPage/Loader.tsx";
 import { useTranslation } from "react-i18next";
 
 
@@ -18,7 +17,7 @@ export const StorageModule: React.FC = () => {
         { id: 2, Component: ApplicationForm, label: t("faq.bid"), title: t("faq.bid") },
     ];
 
-    const { data, isLoading, error } = useQuestionsQuery();
+    const { data, error } = useQuestionsQuery();
 
     const faqRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +26,6 @@ export const StorageModule: React.FC = () => {
     const ActiveComponent = components.find((comp) => comp.id === activeComponent)?.Component;
     const activeTitle = components.find((comp) => comp.id === activeComponent)?.title;
 
-    if (isLoading) return <Loader />;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

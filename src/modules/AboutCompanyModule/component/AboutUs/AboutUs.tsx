@@ -3,7 +3,6 @@ import classes from "./AboutUs.module.scss";
 import { useCounterQuery } from "../../api/useCounterQuery";
 import { MultiContainer } from "../../../../UI/MultiContainer/MultiContainer";
 import { Typography } from "../../../../UI/Typography/Typography";
-import { Loader } from "../../../../pages/LoaderPage/Loader";
 import { ChevronRight } from "../../../../assets/Icons/ChevronRight";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -11,7 +10,7 @@ import { useTranslation } from "react-i18next";
 
 
 export const AboutUs = () => {
-    const { data, isLoading, error } = useCounterQuery();
+    const { data, error } = useCounterQuery();
     const navigate = useNavigate();
     const { t } = useTranslation();
 
@@ -19,7 +18,6 @@ export const AboutUs = () => {
         navigate("/about-company");
     };
 
-    if (isLoading) return <Loader />;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 
