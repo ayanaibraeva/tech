@@ -68,7 +68,7 @@ export const ServicesModule = () => {
                 {dataNames.map(({ id, name }: ServiceType) => (
                     <div
                         key={id}
-                        ref={(el) => (nameRefs.current[name] = el)} // Сохраняем ссылку на элемент
+                        ref={(el) => { nameRefs.current[name] = el; }} // Сохраняем ссылку на элемент
                         onClick={() => setActiveName(name)}
                         className={`${classes.line} ${activeName === name ? classes.active : ''}`}
                     >

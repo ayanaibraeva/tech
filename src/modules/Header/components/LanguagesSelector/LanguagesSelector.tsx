@@ -17,7 +17,7 @@ export const LanguageSelector: React.FC = () => {
 
     useEffect(() => {
         if (!i18n.language) {
-            i18n.changeLanguage('ru-RU');
+            i18n.changeLanguage('ru');
         }
     }, [i18n]);
 
@@ -31,7 +31,7 @@ export const LanguageSelector: React.FC = () => {
     };
 
     const languages = [
-        { code: "ru-RU", label: "RU" },
+        { code: "ru", label: "RU" },
         { code: "en", label: "EN" },
     ];
 

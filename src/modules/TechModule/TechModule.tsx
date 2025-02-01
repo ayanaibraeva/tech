@@ -44,7 +44,7 @@ export const TechModule = () => {
             <div className={classes.caption}>
                 {types.map((type, index) => (
                     <div
-                        key={index} // Используйте индекс как временное решение
+                        key={index}
                         onClick={() => setActiveName(type.name)}
                     >
                         <button className={activeName === type.name ? classes.activeButton : ""}>
@@ -58,7 +58,7 @@ export const TechModule = () => {
                 <div className={classes.card}>
                     {filteredTech.map((tech: Tech) => (
                         <div
-                            key={tech.id} // Убедитесь, что tech.id уникален
+                            key={tech.id}
                             className={classes.cardContent}
                         >
                             <img

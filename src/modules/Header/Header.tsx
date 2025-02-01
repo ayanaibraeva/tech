@@ -174,14 +174,12 @@ export const Header = () => {
                        <SectionLinkItem
                            to="ourTeam"
                            label={t("team")}
-                           onClick={closeMenu}
                        />
                    </div>
                    <div onClick={closeMenu}>
                        <SectionLinkItem
                            to="faq"
                            label="FAQ"
-                           onClick={closeMenu}
                        />
                    </div>
                </div>
