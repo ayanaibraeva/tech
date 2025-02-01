@@ -88,7 +88,7 @@ export const Header = () => {
                             <span>{t("header.about")}</span>
                         </div>
                         <SubLinks />
-                        <ul>
+                        <span>
                             {headerLinks.map(link => (
                                 <SectionLinkItem
                                     key={link.id}
@@ -97,7 +97,7 @@ export const Header = () => {
                                     className={classes.navbarList}
                                 />
                             ))}
-                        </ul>
+                        </span>
                         <div className={classes.navbarList} onClick={handleClickContacts}>
                             <span>{t("header.contact")}</span>
                         </div>

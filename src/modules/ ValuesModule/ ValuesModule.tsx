@@ -5,6 +5,7 @@ import { MultiContainer } from "../../UI/MultiContainer/MultiContainer";
 import { Typography } from "../../UI/Typography/Typography";
 import { useTranslation } from "react-i18next";
 import { UseQueryResult } from "@tanstack/react-query";
+import {Loader} from "../../pages/LoaderPage/Loader.tsx";
 
 type ValueType = {
     id: string | number;
@@ -13,13 +14,14 @@ type ValueType = {
 };
 
 export const ValuesModule = () => {
-    const { data, error }: UseQueryResult<ValueType[], Error> = useValuesQuery();
+
+    const { data, error , isLoading}: UseQueryResult<ValueType[], Error> = useValuesQuery();
 
     const { t } = useTranslation();
 
+    if(isLoading) return <Loader/>
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
-
 
 
     return (

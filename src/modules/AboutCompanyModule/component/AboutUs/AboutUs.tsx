@@ -6,11 +6,12 @@ import { Typography } from "../../../../UI/Typography/Typography";
 import { ChevronRight } from "../../../../assets/Icons/ChevronRight";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import {Loader} from "../../../../pages/LoaderPage/Loader.tsx";
 
 
 
 export const AboutUs = () => {
-    const { data, error } = useCounterQuery();
+    const { data, error, isLoading } = useCounterQuery();
     const navigate = useNavigate();
     const { t } = useTranslation();
 
@@ -18,6 +19,7 @@ export const AboutUs = () => {
         navigate("/about-company");
     };
 
+    if(isLoading) return <Loader/>;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 
@@ -38,10 +40,10 @@ export const AboutUs = () => {
                         <Typography variant="body" className={classes.text}>
                             {item.description}
                         </Typography>
-                        <button onClick={handleLearnMore} className={classes.btn}>
+                        <span onClick={handleLearnMore} className={classes.btn}>
                             <Typography variant="button" color="white">{t("buttonMore")}</Typography>
                             <ChevronRight color="#FFF" height="24px" width="24px" />
-                        </button>
+                        </span>
                     </div>
                 </div>
             ))}

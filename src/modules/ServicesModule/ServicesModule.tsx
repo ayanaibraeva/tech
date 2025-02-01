@@ -7,6 +7,7 @@ import Tilt from "react-parallax-tilt";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Breadcrumbs } from "../../UI/Breadcrumbs/Breadcrums.tsx";
+import {Loader} from "../../pages/LoaderPage/Loader.tsx";
 
 interface ServiceType {
     id: string;
@@ -22,8 +23,8 @@ interface Service {
 }
 
 export const ServicesModule = () => {
-    const { data: dataNames, isError: isErrorNames } = useServicesTypesQuery();
-    const { data: dataServices, isError: isErrorServices } = useQueryServices();
+    const { data: dataNames, isError: isErrorNames, isLoading: loadingServicesTypes } = useServicesTypesQuery();
+    const { data: dataServices, isError: isErrorServices, isLoading: loadingServices } = useQueryServices();
     const { t } = useTranslation();
 
     const [activeName, setActiveName] = useState<string>("");
@@ -51,6 +52,7 @@ export const ServicesModule = () => {
         }
     }, [activeName]);
 
+    if(loadingServicesTypes || loadingServices ) return <Loader/>;
     if (isErrorNames || isErrorServices) return <div>...error</div>;
     if (!Array.isArray(dataNames) || !Array.isArray(dataServices)) return null;
 

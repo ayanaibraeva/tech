@@ -16,7 +16,7 @@ export const LanguageSelector: React.FC = () => {
     useOutsideClick(ref as RefObject<HTMLElement>, () => setActiveList(false));
 
     useEffect(() => {
-        if (!i18n.language) {
+        if (!i18n.language || i18n.language.includes('-')) {
             i18n.changeLanguage('ru');
         }
     }, [i18n]);

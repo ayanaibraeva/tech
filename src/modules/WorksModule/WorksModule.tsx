@@ -5,6 +5,7 @@ import { Typography } from "../../UI/Typography/Typography.tsx";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
 import { LineIcon } from "../../assets/Icons/LineIcon.tsx";
 import { useTranslation } from "react-i18next";
+import {Loader} from "../../pages/LoaderPage/Loader.tsx";
 
 interface WorkItem {
     id: string;
@@ -14,9 +15,10 @@ interface WorkItem {
 }
 
 export const WorksModule = () => {
-    const { data, error } = useWorksQuery();
+    const { data, error, isLoading } = useWorksQuery();
     const { t } = useTranslation();
 
+    if(isLoading) return <Loader/>
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

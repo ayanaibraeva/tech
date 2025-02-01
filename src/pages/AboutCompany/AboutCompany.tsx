@@ -4,6 +4,8 @@ import {OurTeam} from "../../modules/OurTeamModule/OurTeam.tsx";
 import {AboutUsPage} from "../../modules/AboutUsPage/AboutUsPage.tsx";
 import {ValuesModule} from "../../modules/ ValuesModule/ ValuesModule.tsx";
 import {useScrollToTop} from "../../utils/hooks/useScrollToTop.ts";
+import {Suspense} from "react";
+import {Loader} from "../LoaderPage/Loader.tsx";
 
 export const AboutCompany = () => {
 
@@ -11,10 +13,12 @@ export const AboutCompany = () => {
 
     return (
         <MultiContainer>
-            <AboutUsPage/>
-            <Counter/>
-            <ValuesModule/>
-            <OurTeam/>
+            <Suspense fallback={<Loader/>}>
+                <AboutUsPage/>
+                <Counter/>
+                <ValuesModule/>
+                <OurTeam/>
+            </Suspense>
         </MultiContainer>
     )
 }

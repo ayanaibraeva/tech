@@ -10,6 +10,7 @@ import { Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import { LeftIcon } from "../../assets/Icons/LeftIcon.tsx";
 import { RightIcon } from "../../assets/Icons/RightIcon.tsx";
+import {Loader} from "../../pages/LoaderPage/Loader.tsx";
 
 
 interface TeamMember {
@@ -20,11 +21,12 @@ interface TeamMember {
 }
 
 export const OurTeam = () => {
-    const { data, isError } = useTeamQuery();
+    const { data, isError, isLoading } = useTeamQuery();
     const swiperRef:any = useRef(null);
     const { t } = useTranslation();
 
 
+    if(isLoading) return <Loader/>;
     if (isError) return <div>...error</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

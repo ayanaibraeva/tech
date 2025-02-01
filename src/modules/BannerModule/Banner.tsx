@@ -6,6 +6,7 @@ import bannerImage from "../../assets/image/Start.png";
 import { useBannerQuery } from "./api/useBannerQuery.tsx";
 import { useFooterQuery } from "../Footer/api/useFooterQuery.tsx";
 import { useTranslation } from "react-i18next";
+import {Loader} from "../../pages/LoaderPage/Loader.tsx";
 
 interface BannerItem {
     id: string;
@@ -14,11 +15,12 @@ interface BannerItem {
 }
 
 export const Banner = () => {
-    const { data, error } = useBannerQuery();
+    const { data, error, isLoading } = useBannerQuery();
     const { data: footerData } = useFooterQuery();
 
     const { t } = useTranslation();
 
+    if(isLoading) return <Loader/>;
     if (error) return <div>Error: {error.message}</div>;
     if (!Array.isArray(data) || data.length === 0) return null;
 

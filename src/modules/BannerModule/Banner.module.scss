@@ -34,7 +34,9 @@
     border: 1px solid var(--active-color);
     box-shadow: 0 0 6px 0 #8E52DD;
     @media(max-width: 520px){
-      display: none;
+      border: 1px solid #FFF;
+      background-color: var(--fone-file);
+      color: white;
     }
   }
 

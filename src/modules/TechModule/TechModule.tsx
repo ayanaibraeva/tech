@@ -5,6 +5,7 @@ import { useTechTypesQuery } from "./api/useTechTypesQuery.tsx";
 import { useTechQuery } from "./api/useTechQuery.tsx";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import {Loader} from "../../pages/LoaderPage/Loader.tsx";
 
 interface TechType {
     id: string;
@@ -19,12 +20,13 @@ interface Tech {
 }
 
 export const TechModule = () => {
-    const { data: techTypes, isError: isErrorTypes } = useTechTypesQuery();
-    const { data: techData, isError: isErrorTech } = useTechQuery();
+    const { data: techTypes, isError: isErrorTypes, isLoading: isLoadingTypes } = useTechTypesQuery();
+    const { data: techData, isError: isErrorTech, isLoading: isLoadingTech } = useTechQuery();
     const { t } = useTranslation();
 
     const [activeName, setActiveName] = useState<string | undefined>(undefined);
 
+    if(isLoadingTech || isLoadingTypes) return <Loader/>
     if (isErrorTypes || isErrorTech) return <div>...error</div>;
     const types = Array.isArray(techTypes) ? techTypes : [];
     const techItems = Array.isArray(techData) ? techData : [];
