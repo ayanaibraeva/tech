@@ -12,6 +12,7 @@ interface BannerItem {
     id: string;
     title: string;
     text: string;
+    image: null
 }
 
 export const Banner = () => {
@@ -59,7 +60,7 @@ export const Banner = () => {
                             )}
                         </div>
                         <div className={classes.bannerImage}>
-                            <img src={bannerImage || "placeholder.png"} alt={item.title || "Banner"} />
+                            <img src={item.image || "placeholder.png"} alt={item.title || "Banner"} />
                         </div>
                     </div>
                 ))}
