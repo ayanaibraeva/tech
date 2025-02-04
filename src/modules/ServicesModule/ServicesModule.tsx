@@ -1,4 +1,5 @@
 import classes from "./ServicesModule.module.scss";
+
 import { useEffect, useState, useRef } from "react";
 import { Typography } from "../../UI/Typography/Typography.tsx";
 import { useServicesTypesQuery } from "../Header/api/useServicesTypesQuery.tsx";

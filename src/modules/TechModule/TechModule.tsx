@@ -7,7 +7,18 @@ import { useTechQuery } from "./api/useTechQuery.tsx";
 import { Loader } from "../../pages/LoaderPage/Loader.tsx";
 import { useTranslation } from "react-i18next";
 
-const useDragScroll = (ref: React.RefObject<HTMLDivElement>) => {
+interface TechType {
+    name: string;
+}
+
+interface TechItem {
+    id: string;
+    name: string;
+    icon?: string;
+    types?: TechType[];
+}
+
+const useDragScroll = (ref: React.RefObject<HTMLDivElement | null>) => {
     const isDragging = useRef(false);
     const startX = useRef(0);
     const scrollLeft = useRef(0);
@@ -61,9 +72,8 @@ export const TechModule = () => {
 
     const { t } = useTranslation();
 
-    // Устанавливаем activeName в "Все" по умолчанию
     const [activeName, setActiveName] = useState<string>("Все");
-    const captionRef = useRef<HTMLDivElement>(null);
+    const captionRef = useRef<HTMLDivElement | null>(null);
 
     const {
         handleMouseDown,
@@ -75,13 +85,13 @@ export const TechModule = () => {
     if (isLoadingTech || isLoadingTypes) return <Loader />;
     if (isErrorTypes || isErrorTech) return <div>...error</div>;
 
-    const types = techTypes ?? [];
-    const techItems = techData ?? [];
+    const types: TechType[] = techTypes ?? [];
+    const techItems: TechItem[] = techData ?? [];
 
     const filteredTech = activeName === "Все"
         ? techItems
-        : techItems.filter(tech =>
-            tech.types?.some(type => type.name === activeName)
+        : techItems.filter((tech: TechItem) =>
+            tech.types?.some((type: TechType) => type.name === activeName)
         );
 
     const handleTypeClick = (typeName: string) => {

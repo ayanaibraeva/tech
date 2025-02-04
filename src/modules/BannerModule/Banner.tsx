@@ -2,7 +2,6 @@ import classes from "./Banner.module.scss";
 
 import { Typography } from "../../UI/Typography/Typography.tsx";
 import { MultiContainer } from "../../UI/MultiContainer/MultiContainer.tsx";
-import bannerImage from "../../assets/image/Start.png";
 import { useBannerQuery } from "./api/useBannerQuery.tsx";
 import { useFooterQuery } from "../Footer/api/useFooterQuery.tsx";
 import { useTranslation } from "react-i18next";
