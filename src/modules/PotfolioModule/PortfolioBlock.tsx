@@ -109,7 +109,7 @@ export const PortfolioBlock = () => {
                             {item.title}
                         </Typography>
                         <div className={classes.cardContent}>
-                            <Typography variant="body">{item.description}</Typography>
+                            <Typography className={classes.cardDescription} variant="body">{item.description}</Typography>
                             <div className={classes.cardImage}>
                                 <img src={item.image} alt={item.title} />
                             </div>
