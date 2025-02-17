@@ -28,7 +28,7 @@ export const OurTeam = () => {
 
     if(isLoading) return <Loader/>;
     if (isError) return <div>...error</div>;
-    if (!Array.isArray(data) || data.length === 0) return null;
+    if (!Array.isArray(data) || data.length < 4) return null;
 
     return (
         <MultiContainer>
@@ -70,10 +70,8 @@ export const OurTeam = () => {
                                     <img src={item.image} alt={item.name} />
                                 </div>
                                 <div className={classes.cardContent}>
-                                    <Typography variant="body" color="activeColor">
-                                        {item.name}
-                                    </Typography>
-                                    <Typography variant="smallBody">{item.position}</Typography>
+                                    <p>{item.name}</p>
+                                    <span>{item.position}</span>
                                 </div>
                             </div>
                         </SwiperSlide>

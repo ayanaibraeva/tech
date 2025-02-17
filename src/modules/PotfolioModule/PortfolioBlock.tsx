@@ -30,7 +30,14 @@ const Carousel = ({ children }: CarouselProps) => {
 
         const diffX = startX - e.touches[0].clientX;
         if (Math.abs(diffX) > 50) {
-            setActive((prevActive) => (diffX > 0 ? prevActive + 1 : prevActive - 1));
+            setActive((prevActive) => {
+                if (diffX > 0 && prevActive < count - 1) {
+                    return prevActive + 1;
+                } else if (diffX < 0 && prevActive > 0) {
+                    return prevActive - 1;
+                }
+                return prevActive;
+            });
             setStartX(null);
         }
     };
@@ -105,15 +112,31 @@ export const PortfolioBlock = () => {
             <Carousel>
                 {data.map((item: { title: string; description: string; image: string; link: string }, i: number) => (
                     <div key={i} className={classes.card}>
-                        <Typography color="activeColor" variant="h2">
-                            {item.title}
-                        </Typography>
+
+                       <div className={classes.cardMobile}>
+                           <div>
+                               <span>
+                                   {item.title}
+                               </span>
+                               <p>{item.description}</p>
+                           </div>
+                           <div>
+                               <img src={item.image} alt={item.title} />
+                           </div>
+                       </div>
+
                         <div className={classes.cardContent}>
-                            <Typography className={classes.cardDescription} variant="body">{item.description}</Typography>
+                            <div>
+                                <Typography color="activeColor" variant="h2">
+                                    {item.title}
+                                </Typography>
+                                <p>{item.description}</p>
+                            </div>
                             <div className={classes.cardImage}>
                                 <img src={item.image} alt={item.title} />
                             </div>
                         </div>
+
                         <div className={classes.cardBtn}>
                             <a href={item.link} target="_blank" rel="noopener noreferrer">
                                 <Typography className={classes.cardBtnName} variant="h4" color="white">

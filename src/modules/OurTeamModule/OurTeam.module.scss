@@ -1,9 +1,6 @@
 .teamHeading {
   display: flex;
   justify-content: center;
-  @media(max-width: 900px) {
-    margin-top: 48px;
-  }
 }
 
 
@@ -53,7 +50,34 @@
   bottom: 0;
   @media(max-width: 450px) {
     border-radius: 10px;
-    //padding: 5px 10px;
+  }
+  p {
+    font-family: Gilroy;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    color: var(--active-color);
+    @media(max-width: 780px) {
+      font-size: 16px;
+    }
+    @media(max-width: 450px) {
+      font-size: 14px;
+    }
+  }
+
+  span {
+    font-family: Gilroy;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    @media(max-width: 780px) {
+      font-size: 16px;
+    }
+    @media(max-width: 450px) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -70,6 +94,7 @@
   height: 70px;
   border-radius: 50%;
   background-color: var(--active-color);
+  position: absolute;
   @media(max-width: 767px) {
     display: none;
   }
@@ -93,11 +118,9 @@
 }
 
 .btn {
-  position: absolute;
+  position: relative;
   z-index: 3;
   transform: translateY(-50%);
-  width: 100%;
-  max-width: 1270px;
   display: flex;
   justify-content: space-between;
 }
@@ -105,12 +128,35 @@
 .arrowLeft {
   bottom: 160px;
   position: absolute;
-  z-index: 20;
   left: -30px;
 }
 
 .arrowRight {
   position: absolute;
   bottom: 160px;
-  right: 0;
+  right: -30px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

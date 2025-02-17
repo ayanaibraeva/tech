@@ -1,12 +1,8 @@
 .title {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 60px;
   text-align: center;
-  @media(max-width: 900px){
-    margin-top: 60px;
-  }
-
   @media(max-width: 520px){
     margin-top: 50px;
   }
